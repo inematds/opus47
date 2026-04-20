@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4.6 — Quebrando o Default</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-amber-400{color:#92400e}html:not(.dark) .bg-amber-500\/20{background-color:rgba(217,119,6,.12)}html:not(.dark) .bg-amber-500\/10{background-color:rgba(217,119,6,.08)}html:not(.dark) .border-amber-500\/30{border-color:rgba(217,119,6,.25)}html:not(.dark) .hover\:bg-amber-500\/30:hover{background-color:rgba(217,119,6,.18)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-red-400{color:#dc2626}html:not(.dark) .bg-red-900\/20{background-color:rgba(220,38,38,.08)}html:not(.dark) .border-red-500\/30{border-color:rgba(220,38,38,.25)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+html:not(.dark) .text-blue-400{color:#2563eb}html:not(.dark) .bg-blue-900\/20{background-color:rgba(37,99,235,.08)}html:not(.dark) .border-blue-500\/30{border-color:rgba(37,99,235,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-amber-400">Início</a><span>/</span><a href="index.html" class="hover:text-amber-400">Trilha 4</a><span>/</span><span class="text-amber-400">Módulo 4.6</span></div></nav>
+
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MÓDULO 4.6</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🎨 Quebrando o Default</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">3 abordagens que funcionam: paleta concreta com hex, pedir 4 direções antes, e o snippet <code>&lt;frontend_aesthetics&gt;</code> anti-slop.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">45</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Expert</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Técnica</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 180" class="w-full">
+<text x="350" y="25" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">3 PALETAS ALTERNATIVAS — FRIAS, MONOCROMÁTICAS, CONTRASTANTES</text>
+<g transform="translate(50,50)">
+<rect width="40" height="80" fill="#E9ECEC"/><rect x="40" width="40" height="80" fill="#C9D2D4"/>
+<rect x="80" width="40" height="80" fill="#8C9A9E"/><rect x="120" width="40" height="80" fill="#44545B"/>
+<rect x="160" width="40" height="80" fill="#11171B"/>
+<text x="100" y="105" text-anchor="middle" fill="#d4d4d4" font-size="11" font-weight="700">SILVER COOL</text>
+</g>
+<g transform="translate(270,50)">
+<rect width="40" height="80" fill="#0F0F0F"/><rect x="40" width="40" height="80" fill="#1F1F1F"/>
+<rect x="80" width="40" height="80" fill="#3F3F3F"/><rect x="120" width="40" height="80" fill="#7F7F7F"/>
+<rect x="160" width="40" height="80" fill="#DFDFDF"/>
+<text x="100" y="105" text-anchor="middle" fill="#d4d4d4" font-size="11" font-weight="700">MONO BLACK</text>
+</g>
+<g transform="translate(490,50)">
+<rect width="40" height="80" fill="#FFFFFF"/><rect x="40" width="40" height="80" fill="#FF006E"/>
+<rect x="80" width="40" height="80" fill="#3A86FF"/><rect x="120" width="40" height="80" fill="#000000"/>
+<rect x="160" width="40" height="80" fill="#FFBE0B"/>
+<text x="100" y="105" text-anchor="middle" fill="#d4d4d4" font-size="11" font-weight="700">HIGH CONTRAST</text>
+</g>
+<text x="350" y="170" text-anchor="middle" fill="#34d399" font-size="11" font-family="Inter">escolha 1 conforme o mood do produto</text>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">✅ Abordagem A: Paleta concreta com hex (AEFRM)</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Fornecer <strong class="text-amber-400">hex codes explícitos</strong> elimina ambiguidade. O exemplo AEFRM (silver-gray frio) funciona para fintech, enterprise, SaaS sério.</p>
+<div class="bg-dark-800 border border-amber-500/30 rounded-xl p-6">
+<h4 class="font-bold text-amber-400 mb-4">Prompt canônico — Abordagem A</h4>
+<pre class="text-xs text-neutral-300 overflow-x-auto leading-relaxed"><code>Build a landing page for [AEFRM - a quantitative trading
+platform for institutional clients].
+
+Use this exact color palette:
+- Base (lightest):  #E9ECEC
+- Surface:          #C9D2D4
+- Midtone:          #8C9A9E
+- Accent / text:    #44545B
+- Deep (darkest):   #11171B
+
+Do NOT introduce any warm tones, creams, or earth colors.
+Do NOT use serif fonts for body text.
+Use IBM Plex Sans for UI text and IBM Plex Mono for numbers.
+
+Typographic hierarchy:
+- H1: Plex Sans 600, tight tracking, 64px
+- Body: Plex Sans 400, 16px, 1.5 line-height
+- Numbers: Plex Mono 500 (financial figures always monospace)
+
+Restraint:
+- Max 2 colors per section
+- No gradients
+- No rounded corners greater than 4px
+- No drop shadows</code></pre></div>
+<div class="mt-6 grid grid-cols-5 gap-2">
+<div class="rounded p-3 text-center" style="background:#E9ECEC;color:#11171B"><div class="text-xs font-bold">E9ECEC</div></div>
+<div class="rounded p-3 text-center" style="background:#C9D2D4;color:#11171B"><div class="text-xs font-bold">C9D2D4</div></div>
+<div class="rounded p-3 text-center" style="background:#8C9A9E;color:#E9ECEC"><div class="text-xs font-bold">8C9A9E</div></div>
+<div class="rounded p-3 text-center" style="background:#44545B;color:#E9ECEC"><div class="text-xs font-bold">44545B</div></div>
+<div class="rounded p-3 text-center" style="background:#11171B;color:#E9ECEC"><div class="text-xs font-bold">11171B</div></div>
+</div>
+</section>
+
+<section id="topico-2" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">✅ Abordagem B: 4 direções antes de construir</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Forçar <strong class="text-amber-400">divergência antes da convergência</strong>. Evita que o modelo pule direto para o default.</p>
+<div class="bg-dark-800 border border-amber-500/30 rounded-xl p-6">
+<h4 class="font-bold text-amber-400 mb-4">Prompt canônico — Abordagem B</h4>
+<pre class="text-xs text-neutral-300 overflow-x-auto leading-relaxed"><code>Before building anything, propose 4 distinct visual directions
+for this product. Each direction should have a clearly different
+mood, palette, and typographic character — not 4 variants of the
+same idea.
+
+For each direction, specify:
+1. Mood in one sentence (e.g., "technical precision" vs "soft
+   editorial" vs "playful high-contrast" vs "monochrome severity")
+2. Full color palette with hex codes (5 colors)
+3. Display font + body font (Google Fonts names, no serifs by
+   default unless justified)
+4. One signature design choice that makes this direction unique
+   (e.g., "grid lines visible everywhere", "oversized numerals",
+   "monochrome photography")
+5. One reference product or site this direction evokes
+
+At least one direction must deliberately AVOID cream/beige/
+terracotta/warm tones. At least one must avoid serif headings.
+At least one must be high-contrast / editorial / bold.
+
+After presenting all 4, STOP. Wait for me to pick one before
+you write any code. Do not proceed without confirmation.</code></pre></div>
+<div class="mt-6 bg-primary/10 rounded-xl border border-primary/40 p-6"><p class="text-neutral-300 text-sm"><strong class="text-primary">Por que funciona:</strong> "at least one must avoid cream" força o modelo a produzir alternativa real, não um "cream light" disfarçado.</p></div>
+</section>
+
+<section id="topico-3" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">✅ Abordagem C: Snippet anti-slop <code>&lt;frontend_aesthetics&gt;</code></h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">A abordagem <strong class="text-amber-400">mais robusta</strong> das três — cola em <code>claude.md</code> de projeto frontend e rodeia todos prompts.</p>
+<div class="bg-dark-800 border border-amber-500/30 rounded-xl p-6">
+<pre class="text-xs text-neutral-300 overflow-x-auto leading-relaxed"><code>&lt;frontend_aesthetics&gt;
+Do not produce generic AI-generated aesthetic output. Avoid the
+following defaults unless the product domain explicitly asks for
+them (editorial, hospitality, wellness, artisanal food):
+
+- Background cream / beige / off-white with warm undertone
+  (e.g. #F4F1EA, #F8F5EC, #FAF6EB)
+- Serif editorial display fonts as the primary heading
+  (Fraunces, Playfair Display, Recoleta, DM Serif)
+- Terracotta / burnt-orange / amber accent colors
+  (e.g. #C9926F, #B8814E, warm oranges)
+- Italicized serif headlines on soft backgrounds
+- Sparse layouts with generous whitespace and centered content
+- Decorative ornaments (swashes, leaves, hand-drawn dividers)
+
+Instead, before you write any code, make concrete, intentional
+choices:
+
+1. Name the product domain (fintech, SaaS, health, dev tools, etc.)
+2. Pick one mood adjective (precise, playful, severe, friendly)
+3. Propose a palette with 5 explicit hex codes AND justify why
+   each belongs to that mood
+4. Propose a primary font and justify (reference a brand that
+   uses it well)
+5. Name at least 2 visual choices that deliberately break the
+   AI default (e.g., "all-lowercase navigation", "monospace
+   pricing", "no rounded corners", "aggressive grid")
+
+If your first draft matches the defaults above, stop and
+regenerate. Do not ship the default.
+&lt;/frontend_aesthetics&gt;</code></pre></div>
+</section>
+
+<section id="topico-4" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🎨 Construindo paletas frias (silver/blue/black)</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Recipe para paletas frias que <strong class="text-amber-400">comunicam precisão</strong>. 5 tons do claro ao escuro, opcionalmente 1 accent cromático.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6">
+<h4 class="font-bold text-amber-400 mb-4">Template</h4>
+<div class="space-y-3 text-sm text-neutral-300">
+<div class="flex items-center space-x-4"><div class="w-12 h-12 rounded" style="background:#F4F7F8"></div><div><strong>Base</strong> — off-white frio (#F4F7F8). Undertone azul, não amarelo.</div></div>
+<div class="flex items-center space-x-4"><div class="w-12 h-12 rounded" style="background:#D6DEE1"></div><div><strong>Surface</strong> — light gray (#D6DEE1). Para cards/containers.</div></div>
+<div class="flex items-center space-x-4"><div class="w-12 h-12 rounded" style="background:#7A8A92"></div><div><strong>Mid</strong> — medium steel (#7A8A92). Para borders, placeholders, subdued text.</div></div>
+<div class="flex items-center space-x-4"><div class="w-12 h-12 rounded" style="background:#2E3A42"></div><div><strong>Dark</strong> — deep slate (#2E3A42). Para body text, UI dominante.</div></div>
+<div class="flex items-center space-x-4"><div class="w-12 h-12 rounded" style="background:#0E1517"></div><div><strong>Ink</strong> — near-black frio (#0E1517). Headlines, navegação.</div></div>
+<div class="flex items-center space-x-4"><div class="w-12 h-12 rounded" style="background:#0066FF"></div><div><strong>Accent</strong> — electric blue (#0066FF). Apenas em CTAs e dados críticos.</div></div>
+</div>
+</div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mt-6"><p class="text-neutral-300 text-sm"><strong class="text-blue-400">Regra de saturação:</strong> em fintech/healthcare, saturação alta = alarmante. Use accent apenas em 1–2% da tela. Resto é neutro.</p></div>
+</section>
+
+<section id="topico-5" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🔤 Tipografias fora do óbvio</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Inter virou cliché. Fraunces é o default que você quer quebrar. Lista curada:</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl overflow-hidden">
+<table class="w-full text-sm"><thead class="bg-dark-700"><tr><th class="text-left p-4 font-semibold">Fonte</th><th class="text-left p-4 font-semibold">Para</th><th class="text-left p-4 font-semibold">Mood</th></tr></thead>
+<tbody class="divide-y divide-dark-600">
+<tr><td class="p-4 text-amber-400 font-bold">IBM Plex Sans</td><td class="p-4 text-neutral-300">SaaS B2B, fintech</td><td class="p-4 text-neutral-300">Engenharia, honesta</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">Söhne</td><td class="p-4 text-neutral-300">Editorial moderno, enterprise</td><td class="p-4 text-neutral-300">Suíça contemporânea</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">Neue Haas Grotesk</td><td class="p-4 text-neutral-300">Dashboard, enterprise</td><td class="p-4 text-neutral-300">Clássica, neutra</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">JetBrains Mono</td><td class="p-4 text-neutral-300">Dev tools, code-heavy</td><td class="p-4 text-neutral-300">Técnica, precisa</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">GT America</td><td class="p-4 text-neutral-300">Startup confiante</td><td class="p-4 text-neutral-300">Americana geométrica</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">Berkeley Mono</td><td class="p-4 text-neutral-300">Terminal UIs, data platforms</td><td class="p-4 text-neutral-300">Nostalgia serifada-mono</td></tr>
+</tbody></table></div>
+<div class="mt-4 bg-primary/10 rounded-xl border border-primary/40 p-4"><p class="text-sm text-neutral-300"><strong class="text-primary">⚠️ Especifique no prompt.</strong> Se você só pedir "nice font", o 4.7 volta para Inter ou Fraunces.</p></div>
+</section>
+
+<section id="topico-6" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🎬 Micro-interações como diferencial</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">O que separa uma landing AI-generated de uma feita por time sério: <strong class="text-amber-400">motion design</strong> pensado.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6">
+<pre class="text-xs text-neutral-300 overflow-x-auto"><code>// Especifique explicitamente no prompt:
+
+"Interactions:
+ - Primary button hover: scale(1.02) + background shift from
+   #0066FF → #0052CC over 120ms ease-out.
+ - Card hover: translateY(-2px) + shadow shift. Not scale.
+ - Numbers in hero: count-up animation on scroll into view,
+   1200ms, easeOutExpo.
+ - Navbar: transforms from transparent to solid on scroll Y > 64
+   with 160ms backdrop-blur ramp.
+
+Easing library: Framer Motion with custom cubic-bezier(0.22, 1, 0.36, 1).
+Duration budget: nothing over 400ms. Sub-100ms for micro feedback."</code></pre></div>
+</section>
+
+<section id="topico-7" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">🖼️ Estudo de caso: dashboard fintech em paleta fria</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Aplicação conjunta das 3 abordagens. AEFRM paleta + IBM Plex + micro-interações.</p>
+<div class="rounded-xl border overflow-hidden" style="background:#0E1517;border-color:#2E3A42">
+<div class="flex items-center justify-between px-6 py-4 border-b" style="border-color:#2E3A42">
+<div class="flex items-center space-x-6">
+<span class="font-bold text-sm" style="color:#E9ECEC;font-family:'IBM Plex Sans',sans-serif">AEFRM</span>
+<span class="text-xs" style="color:#8C9A9E;font-family:'IBM Plex Sans',sans-serif">portfolio · orders · research</span>
+</div>
+<span class="text-xs font-mono" style="color:#0066FF">LIVE · 09:42:17 UTC</span>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-baseline space-x-3">
+<span class="text-4xl font-bold font-mono" style="color:#E9ECEC">$12,847,221</span>
+<span class="text-sm font-mono" style="color:#0066FF">+2.14%</span>
+</div>
+<div class="text-xs" style="color:#8C9A9E">total portfolio value · updated 2s ago</div>
+<div class="grid grid-cols-4 gap-3 pt-4">
+<div class="p-3 rounded border" style="background:#1A2328;border-color:#2E3A42">
+<div class="text-xs mb-1" style="color:#8C9A9E">positions</div>
+<div class="text-xl font-mono font-bold" style="color:#E9ECEC">47</div>
+</div>
+<div class="p-3 rounded border" style="background:#1A2328;border-color:#2E3A42">
+<div class="text-xs mb-1" style="color:#8C9A9E">beta</div>
+<div class="text-xl font-mono font-bold" style="color:#E9ECEC">0.84</div>
+</div>
+<div class="p-3 rounded border" style="background:#1A2328;border-color:#2E3A42">
+<div class="text-xs mb-1" style="color:#8C9A9E">sharpe</div>
+<div class="text-xl font-mono font-bold" style="color:#E9ECEC">1.92</div>
+</div>
+<div class="p-3 rounded border" style="background:#1A2328;border-color:#2E3A42">
+<div class="text-xs mb-1" style="color:#8C9A9E">drawdown</div>
+<div class="text-xl font-mono font-bold" style="color:#E9ECEC">-3.1%</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-neutral-400">
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-3"><strong class="text-amber-400">Paleta:</strong> silver-gray fria, accent electric blue</div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-3"><strong class="text-amber-400">Fonte:</strong> IBM Plex Sans + Plex Mono para números</div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-3"><strong class="text-amber-400">Resto:</strong> monospace nos números, grid rígido, no warmth</div>
+</div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">3 abordagens</strong><span class="text-neutral-400"> — A: hex concreto | B: 4 direções | C: snippet anti-slop</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Paletas frias</strong><span class="text-neutral-400"> — 5 tons + accent opcional com baixa saturação</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Tipografias alternativas</strong><span class="text-neutral-400"> — IBM Plex, Söhne, JetBrains Mono</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Micro-interações</strong><span class="text-neutral-400"> — especifique easing, duração, delay</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-amber-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">4.7 — Projeto Final Integrador</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-4-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a><a href="modulo-4-7.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 4.6 — Trilha 4 Expert — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>

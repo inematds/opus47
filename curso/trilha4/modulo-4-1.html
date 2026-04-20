@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4.1 — Inventário da Biblioteca</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-amber-400{color:#92400e}html:not(.dark) .bg-amber-500\/20{background-color:rgba(217,119,6,.12)}html:not(.dark) .bg-amber-500\/10{background-color:rgba(217,119,6,.08)}html:not(.dark) .border-amber-500\/30{border-color:rgba(217,119,6,.25)}html:not(.dark) .hover\:bg-amber-500\/30:hover{background-color:rgba(217,119,6,.18)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-red-400{color:#dc2626}html:not(.dark) .bg-red-900\/20{background-color:rgba(220,38,38,.08)}html:not(.dark) .border-red-500\/30{border-color:rgba(220,38,38,.25)}
+html:not(.dark) .text-blue-400{color:#2563eb}html:not(.dark) .bg-blue-900\/20{background-color:rgba(37,99,235,.08)}html:not(.dark) .border-blue-500\/30{border-color:rgba(37,99,235,.25)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-amber-400">Início</a><span>/</span><a href="index.html" class="hover:text-amber-400">Trilha 4</a><span>/</span><span class="text-amber-400">Módulo 4.1</span></div></nav>
+
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MÓDULO 4.1</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">📚 Inventário da Biblioteca</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Mapeie todos os prompts em produção, classifique por risco e priorize o que migrar primeiro. Sem inventário, migração vira caçada às escuras.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Expert</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Migração</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 200" class="w-full">
+<text x="350" y="25" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">INVENTÁRIO DE PROMPTS — LUPA SOBRE PASTAS ETIQUETADAS</text>
+<rect x="60" y="60" width="110" height="100" rx="6" fill="#fbbf24" opacity="0.3" stroke="#fbbf24"/>
+<text x="115" y="100" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="700" font-family="Inter">SYSTEM</text>
+<text x="115" y="120" text-anchor="middle" fill="#fbbf24" font-size="22" font-weight="800" font-family="Inter">12</text>
+<text x="115" y="145" text-anchor="middle" fill="#a3a3a3" font-size="10" font-family="Inter">produção</text>
+<rect x="200" y="60" width="110" height="100" rx="6" fill="#60a5fa" opacity="0.3" stroke="#60a5fa"/>
+<text x="255" y="100" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="700" font-family="Inter">HARNESS</text>
+<text x="255" y="120" text-anchor="middle" fill="#60a5fa" font-size="22" font-weight="800" font-family="Inter">8</text>
+<text x="255" y="145" text-anchor="middle" fill="#a3a3a3" font-size="10" font-family="Inter">scaffolds</text>
+<rect x="340" y="60" width="110" height="100" rx="6" fill="#34d399" opacity="0.3" stroke="#34d399"/>
+<text x="395" y="100" text-anchor="middle" fill="#34d399" font-size="12" font-weight="700" font-family="Inter">SNIPPETS</text>
+<text x="395" y="120" text-anchor="middle" fill="#34d399" font-size="22" font-weight="800" font-family="Inter">34</text>
+<text x="395" y="145" text-anchor="middle" fill="#a3a3a3" font-size="10" font-family="Inter">reusáveis</text>
+<rect x="480" y="60" width="110" height="100" rx="6" fill="#c4b5fd" opacity="0.3" stroke="#c4b5fd"/>
+<text x="535" y="100" text-anchor="middle" fill="#c4b5fd" font-size="12" font-weight="700" font-family="Inter">DOCS</text>
+<text x="535" y="120" text-anchor="middle" fill="#c4b5fd" font-size="22" font-weight="800" font-family="Inter">23</text>
+<text x="535" y="145" text-anchor="middle" fill="#a3a3a3" font-size="10" font-family="Inter">claude.md</text>
+<circle cx="620" cy="85" r="22" fill="none" stroke="#fbbf24" stroke-width="2"/>
+<line x1="636" y1="101" x2="650" y2="115" stroke="#fbbf24" stroke-width="3"/>
+<text x="350" y="190" text-anchor="middle" fill="#d4d4d4" font-size="11" font-family="Inter">77 artefatos mapeados • 43 precisam atenção</text>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">📋 Mapeando todos os prompts em produção</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">O primeiro movimento expert é <strong class="text-amber-400">parar de assumir</strong> que você conhece sua biblioteca. Equipes que rodam há 1+ ano no 4.6 tipicamente têm <strong>dezenas de prompts</strong> espalhados por repos, apps e wiki.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6"><h4 class="font-bold text-amber-400 mb-3">📍 Onde procurar</h4><ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span><code>claude.md</code> / <code>CLAUDE.md</code> em cada repo</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>Strings literais em código (system prompt em .ts/.py)</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>Arquivos <code>.prompt</code>, <code>.md</code>, <code>.txt</code> em <code>prompts/</code></span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>Slash commands customizados (<code>.claude/commands/</code>)</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>Notion/Confluence (humanos copiam e colam)</span></li>
+</ul></div>
+<div class="bg-dark-800 rounded-xl border border-dark-600 p-6"><h4 class="font-bold text-amber-400 mb-3">🔧 Comandos úteis</h4><pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded overflow-x-auto"><code># Grep por padrões comuns de prompt
+git grep -l "system:" | head -20
+git grep -l "claude-3" -- '*.ts' '*.py'
+find . -iname "*claude*.md"
+find . -iname "*.prompt"
+
+# Slash commands locais
+ls ~/.claude/commands/</code></pre></div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6"><h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica Prática</h3><p class="text-neutral-300">Peça ao próprio Claude Code: <em>"Varra este monorepo e liste todos os prompts, system instructions e claude.md. Formato: caminho | tipo | última modificação | tamanho."</em> Ele faz em 1 turno.</p></div>
+</section>
+
+<section id="topico-2" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🏷️ Categorias: System, Harness, Snippet, Docs</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Cada categoria tem <strong class="text-amber-400">blast radius</strong> diferente. Migrar sem essa taxonomia leva a retrabalho.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl overflow-hidden">
+<table class="w-full text-sm"><thead class="bg-dark-700"><tr><th class="text-left p-4 font-semibold">Categoria</th><th class="text-left p-4 font-semibold">Exemplo</th><th class="text-left p-4 font-semibold">Blast radius</th><th class="text-left p-4 font-semibold">Frequência mudança</th></tr></thead>
+<tbody class="divide-y divide-dark-600">
+<tr><td class="p-4 text-amber-400 font-bold">System</td><td class="p-4 text-neutral-300">Instrução base de um agente em produção</td><td class="p-4 text-red-400">Alto</td><td class="p-4 text-neutral-300">Trimestral</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">Harness</td><td class="p-4 text-neutral-300">Scaffold <code>init.sh</code> + <code>spec.md</code></td><td class="p-4 text-red-400">Alto</td><td class="p-4 text-neutral-300">Mensal</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">Snippet</td><td class="p-4 text-neutral-300">Bloco reusável (ex: anti-hardcoding)</td><td class="p-4 text-blue-400">Médio</td><td class="p-4 text-neutral-300">Semanal</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">Docs</td><td class="p-4 text-neutral-300"><code>claude.md</code> do repo</td><td class="p-4 text-emerald-400">Baixo</td><td class="p-4 text-neutral-300">Mensal</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="topico-3" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🔍 Identificando "prompts de 4.6" silenciosamente</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Essas frases são <strong class="text-amber-400">fósseis do 4.6</strong> que ainda rodam. No 4.7 elas ativamente prejudicam performance.</p>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6"><h4 class="font-bold text-red-400 mb-4">🚨 Regex detector (rode em toda biblioteca)</h4>
+<pre class="bg-dark-900 text-xs text-neutral-300 p-4 rounded overflow-x-auto"><code># Anti-patterns comuns
+git grep -iE "double[- ]check|MUST use|CRITICAL:|if in doubt" -- '*.md' '*.ts' '*.py'
+git grep -iE "after every [0-9]+ (tool|turn)" -- '*.md' '*.ts' '*.py'
+git grep -iE "budget_tokens|budget-tokens" -- '*.ts' '*.py' '*.json'
+git grep -iE "be conservative|only report.*confident" -- '*.md'
+git grep -iE "claude-3-(opus|sonnet)-20240" -- '*.ts' '*.py'</code></pre></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Smells de 4.6</h4>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li><code class="text-red-400">"double-check your answer"</code></li>
+<li><code class="text-red-400">"after every 5 tool calls, summarize"</code></li>
+<li><code class="text-red-400">"CRITICAL: MUST use Read tool"</code></li>
+<li><code class="text-red-400">"if in doubt, use Grep"</code></li>
+<li><code class="text-red-400">"be conservative; only flag issues you're sure of"</code></li>
+<li><code class="text-red-400">budget_tokens: 10000</code></li>
+</ul></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Padrões modernos</h4>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li>"Use Read when [condição específica]"</li>
+<li>"Use Grep for content search"</li>
+<li>"Report every issue + confidence + severity"</li>
+<li><code class="text-emerald-400">thinking: {type: "adaptive"}</code></li>
+<li>Effort calibrado via cliente</li>
+</ul></div>
+</div>
+</section>
+
+<section id="topico-4" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">📊 Score de risco — qual migrar primeiro</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Fórmula simples: <code class="text-amber-400">Score = Impacto × Dívida</code>.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6 mb-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+<div><h4 class="font-semibold text-amber-400 mb-2">Impacto (1–5)</h4><ul class="text-neutral-300 text-sm space-y-1"><li>1 = prompt pessoal local</li><li>2 = usado por 1 dev</li><li>3 = usado pelo time (5+ devs)</li><li>4 = staging</li><li>5 = produção com users externos</li></ul></div>
+<div><h4 class="font-semibold text-amber-400 mb-2">Dívida (1–5)</h4><ul class="text-neutral-300 text-sm space-y-1"><li>1 = nenhum anti-pattern</li><li>2 = 1 smell menor</li><li>3 = 2–3 smells</li><li>4 = 4+ smells</li><li>5 = usa budget_tokens ou deprecated API</li></ul></div>
+</div>
+<div class="pt-4 border-t border-dark-600"><p class="text-neutral-300 text-sm"><strong class="text-amber-400">Score ≥ 15:</strong> migre esta semana. <strong class="text-amber-400">10–14:</strong> migre este mês. <strong class="text-amber-400">&lt; 10:</strong> migre no ciclo trimestral.</p></div>
+</div>
+</section>
+
+<section id="topico-5" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">📝 Template de auditoria por prompt</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># Prompt Audit: [nome]
+
+- **Caminho:** `path/to/file`
+- **Tipo:** system | harness | snippet | docs
+- **Owner:** @usuário
+- **Última edição:** 2025-11-XX
+- **Modelo-alvo atual:** claude-3-opus-20240229 ⚠️
+- **Usuários/dia:** ~N
+- **Impacto:** X/5
+- **Dívida:** Y/5
+- **Score:** X*Y
+
+## Anti-patterns encontrados
+- [ ] "double-check" — linha 42
+- [ ] budget_tokens em config — linha 8
+- [ ] CAPS LOCK imperatives — linhas 15, 33
+
+## Ação
+- [ ] Migrar para claude-opus-4-7
+- [ ] Remover scaffolds 4.6
+- [ ] Adicionar snippet anti-overengineering
+- [ ] Validar com eval antes de merge
+
+## Notas
+...</code></pre></div>
+</section>
+
+<section id="topico-6" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🗂️ Versionamento via git</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Todo prompt em <strong class="text-amber-400">arquivo versionado</strong>, nunca string literal escondida em código. Isso habilita diff, revert, blame e PR review.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Antes</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded overflow-x-auto"><code>// app.ts
+const system = `You are a helpful...
+double-check your answer...
+MUST use Read tool first...`;
+await claude.messages.create({system, ...});</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Depois</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded overflow-x-auto"><code>// app.ts
+import systemPrompt from './prompts/agent-review.md';
+await claude.messages.create({
+  system: systemPrompt,
+  model: 'claude-opus-4-7',
+});
+
+// prompts/agent-review.md
+# Agent Review v3
+Investigate before answering...</code></pre></div>
+</div>
+</section>
+
+<section id="topico-7" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">🎯 Prioridades: produção &gt; staging &gt; local</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-xl overflow-hidden">
+<table class="w-full text-sm"><thead class="bg-dark-700"><tr><th class="text-left p-4 font-semibold">Tier</th><th class="text-left p-4 font-semibold">Critério</th><th class="text-left p-4 font-semibold">SLA de migração</th></tr></thead>
+<tbody class="divide-y divide-dark-600">
+<tr><td class="p-4 text-red-400 font-bold">Produção</td><td class="p-4 text-neutral-300">Users externos, revenue impact</td><td class="p-4 text-neutral-300">Esta sprint</td></tr>
+<tr><td class="p-4 text-amber-400 font-bold">Staging</td><td class="p-4 text-neutral-300">Time interno, QA</td><td class="p-4 text-neutral-300">2 semanas</td></tr>
+<tr><td class="p-4 text-blue-400 font-bold">Local</td><td class="p-4 text-neutral-300">Dev individual, scripts pessoais</td><td class="p-4 text-neutral-300">Oportunístico</td></tr>
+</tbody></table></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-6 mt-6"><h4 class="font-bold text-blue-400 mb-2">📌 Regra</h4><p class="text-neutral-300 text-sm">Nunca toque em local enquanto produção tiver anti-patterns. Energia limitada vai pro maior blast radius primeiro.</p></div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Inventário completo antes de migrar</strong><span class="text-neutral-400"> — git grep + lista por categoria</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">4 categorias</strong><span class="text-neutral-400"> — system, harness, snippet, docs</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Score = Impacto × Dívida</strong><span class="text-neutral-400"> — prioridade objetiva</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Prompts em arquivo versionado</strong><span class="text-neutral-400"> — nunca string literal</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Produção primeiro</strong><span class="text-neutral-400"> — blast radius manda</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-amber-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">4.2 — Os 6 Scaffolds para Aposentar</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="../trilha3/modulo-3-7.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior (3.7)</a><a href="modulo-4-2.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 4.1 — Trilha 4 Expert — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>

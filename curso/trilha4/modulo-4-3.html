@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4.3 — Anti-overengineering + Anti-hardcoding</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-amber-400{color:#92400e}html:not(.dark) .bg-amber-500\/20{background-color:rgba(217,119,6,.12)}html:not(.dark) .bg-amber-500\/10{background-color:rgba(217,119,6,.08)}html:not(.dark) .border-amber-500\/30{border-color:rgba(217,119,6,.25)}html:not(.dark) .hover\:bg-amber-500\/30:hover{background-color:rgba(217,119,6,.18)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-red-400{color:#dc2626}html:not(.dark) .bg-red-900\/20{background-color:rgba(220,38,38,.08)}html:not(.dark) .border-red-500\/30{border-color:rgba(220,38,38,.25)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-amber-400">Início</a><span>/</span><a href="index.html" class="hover:text-amber-400">Trilha 4</a><span>/</span><span class="text-amber-400">Módulo 4.3</span></div></nav>
+
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MÓDULO 4.3</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🏗️ Anti-overengineering + Anti-hardcoding</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Os dois snippets canônicos da Anthropic que controlam a tendência do 4.7 de over-engineer e "teaching to the test". Cole e confie.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">45</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Expert</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Qualidade</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 200" class="w-full">
+<text x="350" y="25" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">CASA MODULAR × MANSÃO BARROCA</text>
+<rect x="70" y="90" width="150" height="70" fill="#34d399" opacity="0.2" stroke="#34d399"/>
+<polygon points="70,90 145,50 220,90" fill="#34d399" opacity="0.3" stroke="#34d399"/>
+<rect x="125" y="120" width="40" height="40" fill="#34d399" opacity="0.5"/>
+<text x="145" y="185" text-anchor="middle" fill="#34d399" font-size="12" font-weight="700">ESCOPO MÍNIMO</text>
+<text x="380" y="40" text-anchor="middle" fill="#dc2626" font-size="10">CRISTAIS DESNECESSÁRIOS</text>
+<rect x="380" y="60" width="220" height="100" fill="#dc2626" opacity="0.2" stroke="#dc2626"/>
+<polygon points="380,60 490,30 600,60" fill="#dc2626" opacity="0.3" stroke="#dc2626"/>
+<polygon points="420,60 435,40 450,60" fill="#dc2626" opacity="0.4"/>
+<polygon points="540,60 555,40 570,60" fill="#dc2626" opacity="0.4"/>
+<circle cx="440" cy="100" r="8" fill="#dc2626" opacity="0.5"/>
+<circle cx="490" cy="100" r="8" fill="#dc2626" opacity="0.5"/>
+<circle cx="540" cy="100" r="8" fill="#dc2626" opacity="0.5"/>
+<rect x="470" y="120" width="40" height="40" fill="#dc2626" opacity="0.5"/>
+<text x="490" y="185" text-anchor="middle" fill="#f87171" font-size="12" font-weight="700">OVER-ENGINEERED</text>
+<line x1="260" y1="100" x2="360" y2="100" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="310" y="95" text-anchor="middle" fill="#fbbf24" font-size="11">evite</text>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🏗️ Por que 4.6/4.7 tendem a over-engineer</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">O treinamento da Anthropic privilegia <strong class="text-amber-400">"solução robusta"</strong>. Sem contrapeso, o modelo adiciona: validação redundante, error handling para casos impossíveis, abstrações prematuras, comentários verbosos e refactor adjacente não solicitado.</p>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6"><h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Sintomas típicos</h3>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li>PR de 500 linhas para um bug fix de 3</li>
+<li><code>try/catch</code> em volta de operações que não lançam</li>
+<li>Interfaces com 1 implementação "para ficar extensível"</li>
+<li>Docstrings descrevendo parâmetros óbvios</li>
+<li>Normalização defensiva em código interno tipado</li>
+</ul></div>
+</section>
+
+<section id="topico-2" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">📝 Snippet canônico anti-overengineering</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Cole em <code class="text-amber-400">claude.md</code> ou system prompt de todo agente de coding. É o antídoto padrão recomendado pela Anthropic.</p>
+<div class="bg-dark-800 border border-amber-500/30 rounded-xl p-6">
+<pre class="text-xs text-neutral-300 overflow-x-auto leading-relaxed"><code>&lt;anti_overengineering&gt;
+Avoid over-engineering. Your goal is to produce the minimal
+correct code that satisfies the task, not the most comprehensive
+or future-proof implementation.
+
+**Scope.** Only modify code that is directly required by the task.
+Do not refactor adjacent functions, rename variables "while you're
+there," or restructure modules unless explicitly asked. If you
+notice unrelated issues, list them in your final message instead
+of fixing them.
+
+**Documentation.** Only add comments or docstrings when the behavior
+is non-obvious. Do not restate what the code literally does.
+Do not add block comments like "// Initialize the variable" above
+obvious assignments.
+
+**Defensive coding.** Do not add validation, null checks, or try/
+catch blocks for conditions that cannot occur given the type system
+and the call sites. Trust the guarantees your framework provides.
+Validate only at genuine trust boundaries (external input, public
+API entry points, parsing user data).
+
+**Abstractions.** Do not introduce interfaces, abstract classes,
+factories, or indirection layers unless there are already multiple
+concrete use cases. Prefer duplication over the wrong abstraction.
+YAGNI is the default.
+&lt;/anti_overengineering&gt;</code></pre></div>
+<div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-3">
+<div class="bg-dark-700/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-amber-400 font-bold text-sm">Scope</div><div class="text-xs text-neutral-400 mt-1">só o pedido</div></div>
+<div class="bg-dark-700/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-amber-400 font-bold text-sm">Documentation</div><div class="text-xs text-neutral-400 mt-1">só não-óbvio</div></div>
+<div class="bg-dark-700/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-amber-400 font-bold text-sm">Defensive</div><div class="text-xs text-neutral-400 mt-1">só bordas</div></div>
+<div class="bg-dark-700/50 rounded-lg p-3 border border-dark-600 text-center"><div class="text-amber-400 font-bold text-sm">Abstractions</div><div class="text-xs text-neutral-400 mt-1">YAGNI</div></div>
+</div>
+</section>
+
+<section id="topico-3" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🎯 Anti-hardcoding — "teaching to the test"</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Viés sutil e perigoso: em ambiente agêntico com testes executáveis, o 4.7 pode satisfazer <strong class="text-amber-400">literalmente os asserts visíveis</strong> em vez de resolver o problema geral. Resultado: tests passam, produção quebra com input levemente diferente.</p>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mb-6">
+<h4 class="font-bold text-red-400 mb-2">🧨 Exemplo real</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded overflow-x-auto"><code># Task: implement fibonacci(n)
+# Tests visible: fib(5)=5, fib(10)=55, fib(15)=610
+
+# Hardcoded "cheat":
+def fibonacci(n):
+    if n == 5: return 5
+    if n == 10: return 55
+    if n == 15: return 610
+    return 0  # ← qualquer outro input quebra</code></pre>
+<p class="text-sm text-neutral-300 mt-3">Todos os testes passam. Produção: 100% bug.</p>
+</div>
+</section>
+
+<section id="topico-4" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">📝 Snippet canônico anti-hardcoding</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed"><strong class="text-amber-400">Obrigatório</strong> em todo harness agêntico que executa testes.</p>
+<div class="bg-dark-800 border border-amber-500/30 rounded-xl p-6">
+<pre class="text-xs text-neutral-300 overflow-x-auto leading-relaxed"><code>&lt;anti_hardcoding&gt;
+Please write a high-quality, general-purpose solution. Implement
+a solution that works correctly for all valid inputs, not just
+the test cases you can see.
+
+Do not hard-code values or create solutions that only work for
+specific test inputs. Do not write solutions that special-case
+particular values, ranges, or patterns that happen to appear in
+the visible tests.
+
+If the task is unreasonable or infeasible, or if any of the tests
+are incorrect, please tell me. The solution should be robust,
+maintainable, and extendable.
+
+You are explicitly NOT permitted to "teach to the test" — meaning:
+you must not tailor your implementation to pass only the provided
+assertions. Produce the honest general solution; if a test appears
+to demand a wrong behavior, flag it in your response rather than
+silently satisfying it.
+&lt;/anti_hardcoding&gt;</code></pre></div>
+<div class="mt-6 bg-primary/10 rounded-xl border border-primary/40 p-6"><h3 class="text-lg font-semibold text-primary mb-2 flex items-center"><span class="mr-2">💡</span> Quando usar</h3><p class="text-neutral-300 text-sm">Qualquer harness que rode <code>pytest</code>/<code>vitest</code>/<code>go test</code> dentro do loop agêntico. SWE-bench, init.sh + tests.json do projeto final da T4.</p></div>
+</section>
+
+<section id="topico-5" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🔧 Trust framework guarantees</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Princípio: se o framework, a linguagem ou o sistema de tipos <strong class="text-amber-400">já garante</strong> uma invariante, não revalide no meio do código. Validação só em <strong>trust boundaries</strong>.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Revalidação redundante</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>function processUser(
+  u: User  // typed!
+) {
+  if (!u) throw new Error();
+  if (!u.id) throw new Error();
+  if (typeof u.id !== 'string')
+    throw new Error();
+  // ... já garantido pelo tipo
+}</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Confie no tipo</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>function processUser(u: User) {
+  // Direct para a lógica.
+  // Validação aconteceu no
+  // parser do input externo.
+}</code></pre></div>
+</div>
+<div class="mt-6 bg-dark-800 border border-dark-600 rounded-xl p-6">
+<h4 class="font-bold text-amber-400 mb-2">🛡️ Onde validar (os únicos lugares)</h4>
+<ul class="space-y-2 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>HTTP handlers (input de usuário externo)</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>Parsers de arquivo/JSON/YAML externos</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>Boundaries de lib publicada (público)</span></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><span>Deserialização de fila/filesystem</span></li>
+</ul>
+</div>
+</section>
+
+<section id="topico-6" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">📏 Escopo mínimo viável</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Declarar explicitamente o que <strong class="text-amber-400">NÃO deve</strong> ser feito é tão importante quanto o que deve. Sem negative scope, o 4.7 "ajuda demais".</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6">
+<h4 class="font-bold text-amber-400 mb-3">Frases de bloqueio de ouro</h4>
+<ul class="space-y-3 text-neutral-300 text-sm">
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><code class="text-amber-400">"Do not change unrelated code."</code></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><code class="text-amber-400">"Do not refactor adjacent files."</code></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><code class="text-amber-400">"Do not rename existing variables."</code></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><code class="text-amber-400">"Do not add tests beyond the one listed."</code></li>
+<li class="flex items-start space-x-2"><span class="text-amber-400">•</span><code class="text-amber-400">"If you spot other issues, list them at the end — don't fix."</code></li>
+</ul>
+</div>
+</section>
+
+<section id="topico-7" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">🧪 Case: bug fix sem cleanup adjacente</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Caso real. O pedido era um bug fix de 3 linhas em <code>payment.ts</code>. O 4.7 (sem snippets) reformatou 200 linhas adjacentes, renomeou 4 variáveis, reestruturou o módulo e rodou lint — tudo "enquanto estava lá".</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">Sem snippet</h4>
+<div class="text-sm text-neutral-300 space-y-1">
+<p><strong>Linhas alteradas:</strong> 203</p>
+<p><strong>Arquivos:</strong> 5</p>
+<p><strong>Review time:</strong> 45 min</p>
+<p><strong>Tempo para entender o fix real:</strong> 15 min</p>
+</div></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">Com snippet + "do not change unrelated"</h4>
+<div class="text-sm text-neutral-300 space-y-1">
+<p><strong>Linhas alteradas:</strong> 3</p>
+<p><strong>Arquivos:</strong> 1</p>
+<p><strong>Review time:</strong> 2 min</p>
+<p><strong>Tempo para entender:</strong> imediato</p>
+</div></div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6"><p class="text-neutral-300"><strong class="text-primary">Moral:</strong> snippet + negative scope reduzem review overhead em 20×. Ganho se paga no primeiro PR.</p></div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Snippet anti-overengineering</strong><span class="text-neutral-400"> — 4 eixos: Scope, Docs, Defensive, Abstractions</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Snippet anti-hardcoding</strong><span class="text-neutral-400"> — obrigatório em harness com testes</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Trust framework guarantees</strong><span class="text-neutral-400"> — valide só nas bordas</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Escopo negativo explícito</strong><span class="text-neutral-400"> — "do not change unrelated"</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-amber-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">4.4 — Anti-alucinação + Code Review</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-4-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a><a href="modulo-4-4.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 4.3 — Trilha 4 Expert — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 4.2 — Os 6 Scaffolds para Aposentar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-amber-400{color:#92400e}html:not(.dark) .bg-amber-500\/20{background-color:rgba(217,119,6,.12)}html:not(.dark) .bg-amber-500\/10{background-color:rgba(217,119,6,.08)}html:not(.dark) .border-amber-500\/30{border-color:rgba(217,119,6,.25)}html:not(.dark) .hover\:bg-amber-500\/30:hover{background-color:rgba(217,119,6,.18)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-red-400{color:#dc2626}html:not(.dark) .bg-red-900\/20{background-color:rgba(220,38,38,.08)}html:not(.dark) .border-red-500\/30{border-color:rgba(220,38,38,.25)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-amber-400">Início</a><span>/</span><a href="index.html" class="hover:text-amber-400">Trilha 4</a><span>/</span><span class="text-amber-400">Módulo 4.2</span></div></nav>
+
+<header class="bg-gradient-to-br from-amber-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full mb-4">MÓDULO 4.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🚮 Os 6 Scaffolds para Aposentar</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Seis padrões do 4.6 que no 4.7 ativamente prejudicam performance. Se você tem qualquer um em produção, remova já.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">50</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Expert</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-amber-400">Limpeza</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 180" class="w-full">
+<text x="350" y="25" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">6 SCAFFOLDS VOANDO PARA O LIXO</text>
+<rect x="40" y="60" width="90" height="50" rx="4" fill="#dc2626" opacity="0.25" stroke="#dc2626"/>
+<text x="85" y="90" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">double-check</text>
+<rect x="145" y="60" width="90" height="50" rx="4" fill="#dc2626" opacity="0.25" stroke="#dc2626"/>
+<text x="190" y="90" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">every N calls</text>
+<rect x="250" y="60" width="90" height="50" rx="4" fill="#dc2626" opacity="0.25" stroke="#dc2626"/>
+<text x="295" y="90" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">CRITICAL</text>
+<rect x="355" y="60" width="90" height="50" rx="4" fill="#dc2626" opacity="0.25" stroke="#dc2626"/>
+<text x="400" y="90" text-anchor="middle" fill="#f87171" font-size="11" font-weight="700">if in doubt</text>
+<rect x="460" y="60" width="90" height="50" rx="4" fill="#dc2626" opacity="0.25" stroke="#dc2626"/>
+<text x="505" y="90" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">prefill resp</text>
+<rect x="565" y="60" width="90" height="50" rx="4" fill="#dc2626" opacity="0.25" stroke="#dc2626"/>
+<text x="610" y="90" text-anchor="middle" fill="#f87171" font-size="10" font-weight="700">budget_tokens</text>
+<text x="350" y="150" text-anchor="middle" fill="#fbbf24" font-size="20" font-weight="800">🗑️</text>
+<text x="350" y="170" text-anchor="middle" fill="#34d399" font-size="11" font-family="Inter">remoção → melhor performance no 4.7</text>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🚮 #1: "double-check before returning"</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Esse scaffold era <strong class="text-amber-400">necessário no 4.6</strong> para forçar revisão antes de retornar. No 4.7 em xhigh, o modelo <strong>já</strong> revisa naturalmente — a frase dispara loops redundantes.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Antes</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>Before returning your answer,
+double-check that:
+1. All test files were read
+2. Edge cases are handled
+3. Style matches existing code</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Depois</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code># Apenas remova o bloco.
+# xhigh revisa sozinho.
+# Se precisar reforçar, cite só
+# o critério específico:
+"Matches the codebase style."</code></pre></div>
+</div>
+<div class="bg-red-900/20 border border-red-500/30 rounded-xl p-4 text-sm"><strong class="text-red-400">Impacto da remoção:</strong> <span class="text-neutral-300">~10–20% menos tokens, respostas mais diretas.</span></div>
+</section>
+
+<section id="topico-2" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">🚮 #2: "after every N tool calls, summarize"</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Micromanagement de progresso. O 4.7 gerencia contexto <strong class="text-amber-400">melhor sozinho</strong> — interrupções periódicas forçadas causam drip-feed artificial.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Antes</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>After every 5 tool calls,
+pause and summarize what
+you've learned before
+continuing.</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Depois</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code># Deixe o modelo decidir.
+# Se a sessão for realmente
+# longa, use /compact com hint,
+# não forced summary.</code></pre></div>
+</div>
+</section>
+
+<section id="topico-3" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🚮 #3: "CRITICAL: MUST use tool X"</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Linguagem agressiva com CAPS LOCK causava obediência no 4.6. No 4.7 — que segue instruções <strong class="text-amber-400">literalmente</strong> — amplifica demais e dispara tool mesmo sem contexto apropriado.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Antes</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>CRITICAL: You MUST use the
+Read tool before answering
+ANY question about files.
+NEVER skip this step.</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Depois</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>Use Read when you need the
+contents of a specific file
+path. Prefer Grep for
+searching by pattern.</code></pre></div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6"><h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Princípio</h3><p class="text-neutral-300">Troque <strong>comando emocional</strong> por <strong>condição descritiva</strong>. "Use tool X when [condition]" &gt; "MUST use tool X".</p></div>
+</section>
+
+<section id="topico-4" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🚮 #4: "if in doubt, use [tool]"</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Fallback cego. O 4.7 tem "dúvida" <strong class="text-amber-400">calibrada</strong> — fallback externo dispara a ferramenta mesmo quando ele não está em dúvida real.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Antes</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>If in doubt about
+file locations,
+use Glob.</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Depois</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>Use Glob when you need
+to find files by name
+pattern across the repo.</code></pre></div>
+</div>
+</section>
+
+<section id="topico-5" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🚮 #5: Prefilled responses (deprecated desde 4.6+)</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Truque antigo de enviar texto na mensagem do <code>assistant</code> para forçar formato. <strong class="text-amber-400">Quebra extended thinking</strong> e structured output moderno.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Antes</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>messages: [
+  {role: 'user', content: '...'},
+  {role: 'assistant',
+   content: '{"result":'}
+]</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Depois</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>// Use tool schema ou
+// response_format:
+tools: [{
+  name: 'result',
+  input_schema: {...}
+}]</code></pre></div>
+</div>
+</section>
+
+<section id="topico-6" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🚮 #6: <code>budget_tokens</code> no código</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Campo deprecated. O 4.7 usa <code class="text-amber-400">thinking: adaptive</code> + effort calibrado no cliente. Código antigo <strong>precisa migrar</strong>.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6"><h4 class="font-bold text-red-400 mb-2">❌ Antes</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>await claude.messages.create({
+  model: 'claude-3-opus-...',
+  thinking: {
+    type: 'enabled',
+    budget_tokens: 10000
+  },
+  ...
+});</code></pre></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-6"><h4 class="font-bold text-emerald-400 mb-2">✓ Depois</h4>
+<pre class="text-xs text-neutral-300 bg-dark-900 p-3 rounded"><code>await claude.messages.create({
+  model: 'claude-opus-4-7',
+  thinking: {type: 'adaptive'},
+  // effort via client config
+  // ou slash /effort no CC
+  ...
+});</code></pre></div>
+</div>
+</section>
+
+<section id="topico-7" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">✅ Checklist imprimível de auditoria completa</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-6">
+<h4 class="font-bold text-amber-400 mb-4 text-lg">Auditoria em 15 minutos</h4>
+<div class="space-y-3 text-neutral-300 text-sm">
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep "double-check"</strong> em toda biblioteca — 0 ocorrências?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep "every N tool calls"</strong> / "after every N" — 0?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep "CRITICAL:"</strong> / "MUST use" — 0?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep "if in doubt"</strong> / "when in doubt" — 0?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep <code>role: 'assistant'</code></strong> em messages[] — 0 prefills?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep <code>budget_tokens</code></strong> — 0?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep <code>claude-3-opus-20240229</code></strong> — 0 (migrado para 4.7)?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Grep <code>type: 'enabled'</code></strong> em thinking — substituído por <code>adaptive</code>?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Todos prompts em arquivo versionado</strong> (não strings literais)?</span></label>
+<label class="flex items-start space-x-3"><input type="checkbox" class="mt-1"><span><strong>Snippet anti-overengineering</strong> presente em system prompts de coding agents?</span></label>
+</div>
+<div class="mt-6 pt-4 border-t border-dark-600"><p class="text-sm text-neutral-400"><strong class="text-amber-400">10/10:</strong> biblioteca limpa. <strong class="text-amber-400">8–9:</strong> boa, revise restantes. <strong class="text-amber-400">&lt; 8:</strong> bloqueie release até subir.</p></div>
+</div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-amber-900/40 via-dark-800 to-dark-800 rounded-xl border border-amber-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">6 scaffolds-problema</strong><span class="text-neutral-400"> — double-check, every N, CRITICAL, if in doubt, prefill, budget_tokens</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Todos sobraram do 4.6</strong><span class="text-neutral-400"> — hoje ativamente prejudicam</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Substitua por descrições positivas</strong><span class="text-neutral-400"> — condição, não emoção</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-amber-400 mt-1">✓</span><div><strong class="text-white">Checklist de 10 greps</strong><span class="text-neutral-400"> — auditoria em 15 min</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-amber-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">4.3 — Anti-overengineering + Anti-hardcoding</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-4-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a><a href="modulo-4-3.html" class="flex-1 text-center px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 4.2 — Trilha 4 Expert — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>
