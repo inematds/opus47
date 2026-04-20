@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3.4 — Receitas de Subagentes</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-purple-400{color:#7c3aed}html:not(.dark) .bg-purple-500\/20{background-color:rgba(124,58,237,.12)}html:not(.dark) .bg-purple-500\/10{background-color:rgba(124,58,237,.08)}html:not(.dark) .border-purple-500\/30{border-color:rgba(124,58,237,.25)}
+html:not(.dark) .hover\:bg-purple-500\/30:hover{background-color:rgba(124,58,237,.18)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-red-400{color:#dc2626}html:not(.dark) .bg-red-900\/20{background-color:rgba(220,38,38,.08)}html:not(.dark) .border-red-500\/30{border-color:rgba(220,38,38,.25)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+html:not(.dark) .text-blue-400{color:#2563eb}html:not(.dark) .bg-blue-900\/20{background-color:rgba(37,99,235,.08)}html:not(.dark) .border-blue-500\/30{border-color:rgba(37,99,235,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-purple-400">Início</a><span>/</span><a href="index.html" class="hover:text-purple-400">Trilha 3</a><span>/</span><span class="text-purple-400">Módulo 3.4</span></div></nav>
+
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.4</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">🍳 Receitas de Subagentes</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">6 receitas prontas: pesquisa legada, verificação contra spec, changelog de diff, testes pesados, design paralelo e security review.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">45</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Avançado</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Aplicação</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 180" class="w-full">
+<text x="350" y="24" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">6 RECEITAS — cartas de baralho</text>
+<g><rect x="40" y="50" width="90" height="110" rx="6" fill="#a78bfa"/><text x="85" y="80" text-anchor="middle" fill="#111827" font-size="20">🔎</text><text x="85" y="110" text-anchor="middle" fill="#111827" font-size="9" font-weight="700">LEGACY</text></g>
+<g><rect x="145" y="50" width="90" height="110" rx="6" fill="#818cf8"/><text x="190" y="80" text-anchor="middle" fill="#111827" font-size="20">✅</text><text x="190" y="110" text-anchor="middle" fill="#111827" font-size="9" font-weight="700">SPEC</text></g>
+<g><rect x="250" y="50" width="90" height="110" rx="6" fill="#a78bfa"/><text x="295" y="80" text-anchor="middle" fill="#111827" font-size="20">📚</text><text x="295" y="110" text-anchor="middle" fill="#111827" font-size="9" font-weight="700">DIFF DOC</text></g>
+<g><rect x="355" y="50" width="90" height="110" rx="6" fill="#818cf8"/><text x="400" y="80" text-anchor="middle" fill="#111827" font-size="20">🧪</text><text x="400" y="110" text-anchor="middle" fill="#111827" font-size="9" font-weight="700">TESTS</text></g>
+<g><rect x="460" y="50" width="90" height="110" rx="6" fill="#a78bfa"/><text x="505" y="80" text-anchor="middle" fill="#111827" font-size="20">🎨</text><text x="505" y="110" text-anchor="middle" fill="#111827" font-size="9" font-weight="700">DESIGN</text></g>
+<g><rect x="565" y="50" width="90" height="110" rx="6" fill="#818cf8"/><text x="610" y="80" text-anchor="middle" fill="#111827" font-size="20">🔍</text><text x="610" y="110" text-anchor="middle" fill="#111827" font-size="9" font-weight="700">SECURITY</text></g>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🔎 Pesquisar codebase legado</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code>Goal: mapear o módulo de billing legado em src/legacy/billing/.
+
+Paths: src/legacy/billing/**/*.py
+
+Return shape:
+  1. Entrypoints públicos (função + assinatura + arquivo:linha)
+  2. Dependências externas (imports não-stdlib)
+  3. Estado compartilhado (globais, singletons, db sessions)
+  4. Riscos conhecidos (TODOs, FIXMEs, hacks)
+
+Não modifique nada. Apenas leia e resuma.</code></pre></div>
+</section>
+
+<section id="topico-2" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">✅ Verificar contra spec</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code>Goal: comparar implementação em src/feature/x.ts com docs/spec-x.md.
+
+Return shape (tabela markdown):
+  | Requisito | Implementado? | Evidência (arquivo:linha) | Gap |
+
+Prioridade: coverage completa, não ranking. Liste TODOS
+os requisitos mesmo que parciais.</code></pre></div>
+</section>
+
+<section id="topico-3" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">📚 Docs de git diff</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code>Goal: gerar entry de CHANGELOG.md para commits desde
+v1.2.0 (git log v1.2.0..HEAD).
+
+Return shape (markdown):
+  ### [Unreleased]
+  #### Added / Changed / Fixed / Removed
+  - &lt;rationale em 1 linha focando em "why"&gt;
+
+Não inclua commits de merge nem de docs/. Agrupe por tema.</code></pre></div>
+</section>
+
+<section id="topico-4" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🧪 Suite de testes pesada</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code>Goal: rodar `pytest -v tests/integration/` e reportar.
+
+Return shape (tabela):
+  | Teste | Status | Arquivo:linha | Tipo de erro |
+
+Não inclua stdout. Se &gt;50 falhas, agrupe por tipo e
+mostre 1 exemplo por grupo. Termine com nota sobre
+flakiness suspeita.</code></pre></div>
+</section>
+
+<section id="topico-5" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">🎨 Design alternativo</h2></div>
+<p class="text-neutral-300 mb-4">Dispare 3 subagentes <strong class="text-purple-400">no mesmo turno</strong>, cada um com constraints diferentes:</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-4"><h4 class="font-bold text-blue-400 mb-1">Sub A</h4><p class="text-xs text-neutral-300">Design <strong>minimalista</strong>, &lt;200 linhas, sem deps novas.</p></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-4"><h4 class="font-bold text-blue-400 mb-1">Sub B</h4><p class="text-xs text-neutral-300">Design <strong>event-driven</strong>, usando biblioteca X existente.</p></div>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-4"><h4 class="font-bold text-blue-400 mb-1">Sub C</h4><p class="text-xs text-neutral-300">Design <strong>performático</strong>, otimiza para 10k req/s.</p></div>
+</div>
+</section>
+
+<section id="topico-6" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🔍 Security review</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code>System: You are a security auditor. Assume adversarial input.
+
+Goal: revisar diff `git diff main..HEAD` em busca de
+vulnerabilidades.
+
+Report every finding — coverage &gt; ranking.
+
+Return shape (tabela):
+  | Issue | Arquivo:linha | Severity | Confidence | Fix sugerido |
+
+Severity: critical/high/medium/low. Confidence: 1–5.</code></pre></div>
+</section>
+
+<section id="topico-7" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">💾 Salvando como snippets</h2></div>
+<p class="text-neutral-300 mb-4">Transforme receitas em automação pessoal:</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5"><h4 class="font-bold text-emerald-400 mb-2">✓ Bom</h4><ul class="space-y-1 text-sm text-neutral-300"><li>• VSCode snippets (nomeados por caso)</li><li>• Clipboard manager (Raycast/Alfred)</li><li>• Arquivos em ~/.claude/recipes/</li></ul></div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-5"><h4 class="font-bold text-red-400 mb-2">✗ Ruim</h4><ul class="space-y-1 text-sm text-neutral-300"><li>• Notion/Docs — alta fricção</li><li>• Nomear por tecnologia (muda)</li><li>• Deixar na cabeça</li></ul></div>
+</div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-3 mb-8">
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">6 receitas</strong><span class="text-neutral-400"> — legado, spec, diff, tests, design, security</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Return shape sempre</strong><span class="text-neutral-400"> — tabela ou markdown estruturado</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Coverage &gt; ranking</strong><span class="text-neutral-400"> — em análises</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Snippets locais</strong><span class="text-neutral-400"> — biblioteca pessoal de baixo atrito</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-6"><h3 class="font-semibold text-purple-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">3.5 — Auto Mode (Claude Code Max)</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-3-3.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a><a href="modulo-3-5.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 3.4 — Trilha 3 Avançado — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>

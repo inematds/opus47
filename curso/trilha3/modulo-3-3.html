@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 3.3 — Subagentes Explícitos</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-purple-400{color:#7c3aed}html:not(.dark) .bg-purple-500\/20{background-color:rgba(124,58,237,.12)}html:not(.dark) .bg-purple-500\/10{background-color:rgba(124,58,237,.08)}html:not(.dark) .border-purple-500\/30{border-color:rgba(124,58,237,.25)}
+html:not(.dark) .hover\:bg-purple-500\/30:hover{background-color:rgba(124,58,237,.18)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-red-400{color:#dc2626}html:not(.dark) .bg-red-900\/20{background-color:rgba(220,38,38,.08)}html:not(.dark) .border-red-500\/30{border-color:rgba(220,38,38,.25)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+html:not(.dark) .text-blue-400{color:#2563eb}html:not(.dark) .bg-blue-900\/20{background-color:rgba(37,99,235,.08)}html:not(.dark) .border-blue-500\/30{border-color:rgba(37,99,235,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-purple-400">Início</a><span>/</span><a href="index.html" class="hover:text-purple-400">Trilha 3</a><span>/</span><span class="text-purple-400">Módulo 3.3</span></div></nav>
+
+<header class="bg-gradient-to-br from-purple-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full mb-4">MÓDULO 3.3</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">👥 Subagentes Explícitos</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Delegar é sobre quem precisa do output. Teste mental, prompt canônico e economia de contexto.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">45</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Avançado</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-purple-400">Delegação</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 200" class="w-full">
+<text x="350" y="24" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">NÓ PAI → 3 SUBAGENTES PARALELOS</text>
+<circle cx="350" cy="70" r="30" fill="#a78bfa"/>
+<text x="350" y="75" text-anchor="middle" fill="#111827" font-size="11" font-weight="700">PAI</text>
+<line x1="350" y1="100" x2="150" y2="150" stroke="#a78bfa" stroke-width="1.5"/>
+<line x1="350" y1="100" x2="350" y2="150" stroke="#a78bfa" stroke-width="1.5"/>
+<line x1="350" y1="100" x2="550" y2="150" stroke="#a78bfa" stroke-width="1.5"/>
+<circle cx="150" cy="160" r="22" fill="#4b5563"/><text x="150" y="164" text-anchor="middle" fill="#fff" font-size="10">Sub A</text>
+<circle cx="350" cy="160" r="22" fill="#4b5563"/><text x="350" y="164" text-anchor="middle" fill="#fff" font-size="10">Sub B</text>
+<circle cx="550" cy="160" r="22" fill="#4b5563"/><text x="550" y="164" text-anchor="middle" fill="#fff" font-size="10">Sub C</text>
+<text x="150" y="195" text-anchor="middle" fill="#a3a3a3" font-size="9">módulo A</text>
+<text x="350" y="195" text-anchor="middle" fill="#a3a3a3" font-size="9">módulo B</text>
+<text x="550" y="195" text-anchor="middle" fill="#a3a3a3" font-size="9">módulo C</text>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🧠 Teste mental</h2></div>
+<p class="text-neutral-300 mb-4 leading-relaxed">Antes de disparar subagente, pergunte-se:</p>
+<div class="bg-blue-900/20 rounded-xl border border-blue-500/30 p-5"><p class="text-lg text-neutral-300"><strong class="text-blue-400">"Preciso do output intermediário ou só da conclusão?"</strong></p><p class="text-sm text-neutral-400 mt-2">Se só conclusão → subagente. Se precisa ver o caminho → mantém no contexto principal.</p></div>
+</section>
+
+<section id="topico-2" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">📝 Prompt canônico</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code>&lt;subagent_policy&gt;
+Do not spawn a subagent for tasks that fit in a single
+direct response. Subagents have setup overhead and their
+own context; they only pay off when either:
+
+  (a) the output intermediário é ruidoso (50k+ tokens) e
+      you only need a distilled conclusion, or
+  (b) three or more independent investigations can run
+      simultaneously and you want real parallelism.
+
+When spawning, always pass: goal, exact file paths,
+success criteria, and the expected return shape.
+&lt;/subagent_policy&gt;</code></pre></div>
+</section>
+
+<section id="topico-3" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🪄 Fan-out múltiplo</h2></div>
+<p class="text-neutral-300 mb-4">Três subagentes no mesmo turno, cada um com seu contexto isolado. Pai sintetiza quando todos voltam.</p>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5"><p class="text-sm text-neutral-300"><strong class="text-emerald-400">Exemplo:</strong> em um refator grande, um subagente atualiza o módulo de auth, outro migra os testes, outro reescreve a doc — simultaneamente.</p></div>
+</section>
+
+<section id="topico-4" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">⚠️ Over-use</h2></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-5"><h4 class="font-bold text-red-400 mb-2">✗ Não delegue</h4><ul class="space-y-1 text-sm text-neutral-300"><li>• "Qual o nome da função X?"</li><li>• Edit de 3 linhas em 1 arquivo</li><li>• Resposta que cabe em 1 parágrafo</li></ul></div>
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5"><h4 class="font-bold text-emerald-400 mb-2">✓ Delegue</h4><ul class="space-y-1 text-sm text-neutral-300"><li>• Mapear 30 arquivos legados</li><li>• Rodar suíte de testes pesada</li><li>• Explorar 3 designs em paralelo</li></ul></div>
+</div>
+</section>
+
+<section id="topico-5" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">💰 Economia de contexto</h2></div>
+<p class="text-neutral-300 mb-4">O subagente lê 50k tokens e retorna 2k resumidos. A janela pai fica <strong class="text-purple-400">livre para decisão</strong>.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl overflow-hidden">
+<table class="w-full text-sm"><thead class="bg-dark-700"><tr><th class="text-left p-3">Cenário</th><th class="text-left p-3">Contexto pai</th><th class="text-left p-3">Output útil</th></tr></thead>
+<tbody class="divide-y divide-dark-600">
+<tr><td class="p-3 text-neutral-300">Sem subagente</td><td class="p-3 text-red-400">50k+ tokens ruidosos</td><td class="p-3 text-neutral-400">~2k</td></tr>
+<tr><td class="p-3 text-neutral-300">Com subagente</td><td class="p-3 text-emerald-400">~2k resumo</td><td class="p-3 text-neutral-400">~2k</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="topico-6" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🔁 Passando contexto</h2></div>
+<p class="text-neutral-300 mb-4">Subagente começa do zero — briefing vale como ICCA humano:</p>
+<ul class="space-y-2 text-neutral-300 mb-4">
+<li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">•</span><div><strong>Goal:</strong> uma frase objetivo do que retornar</div></li>
+<li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">•</span><div><strong>Paths:</strong> caminhos absolutos exatos, não "algum lugar em src"</div></li>
+<li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">•</span><div><strong>Constraints:</strong> o que NÃO pode modificar</div></li>
+<li class="flex items-start space-x-3"><span class="text-purple-400 mt-1">•</span><div><strong>Return shape:</strong> markdown com seções, JSON, tabela etc.</div></li>
+</ul>
+</section>
+
+<section id="topico-7" class="mb-12"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">🧪 Laboratório: refator com 3 subagentes</h2></div>
+<div class="bg-dark-800 border border-dark-600 rounded-xl p-5"><h4 class="font-bold text-purple-400 mb-3">Exercício</h4>
+<ol class="space-y-2 text-sm text-neutral-300 list-decimal list-inside">
+<li>Escolha um refator de ≥3 módulos independentes.</li>
+<li>Briefing pai: delega 3 subagentes paralelos, cada um com paths e return shape próprios.</li>
+<li>Pai sintetiza e abre PR.</li>
+<li>Registre: wall-clock, turnos, tokens, context do pai.</li>
+<li>Compare com a versão sequencial que você teria feito.</li>
+</ol></div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-purple-900/40 via-dark-800 to-dark-800 rounded-xl border border-purple-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-3 mb-8">
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Teste mental</strong><span class="text-neutral-400"> — output ou conclusão?</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Prompt canônico</strong><span class="text-neutral-400"> — anti over-use</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Economia de contexto</strong><span class="text-neutral-400"> — principal ganho</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-purple-400 mt-1">✓</span><div><strong class="text-white">Briefing completo</strong><span class="text-neutral-400"> — goal, paths, constraints, shape</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-6"><h3 class="font-semibold text-purple-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">3.4 — Receitas de Subagentes</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-3-2.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a><a href="modulo-3-4.html" class="flex-1 text-center px-6 py-3 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 3.3 — Trilha 3 Avançado — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>
