@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 2.2 — Templates ICCA Prontos</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-blue-400{color:#2563eb}html:not(.dark) .bg-blue-500\/20{background-color:rgba(37,99,235,.12)}html:not(.dark) .bg-blue-500\/10{background-color:rgba(37,99,235,.08)}html:not(.dark) .border-blue-500\/30{border-color:rgba(37,99,235,.25)}
+html:not(.dark) .hover\:bg-blue-500\/30:hover{background-color:rgba(37,99,235,.18)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-blue-400">Início</a><span>/</span><a href="index.html" class="hover:text-blue-400">Trilha 2</a><span>/</span><span class="text-blue-400">Módulo 2.2</span></div></nav>
+
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.2</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">📋 Templates ICCA Prontos</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">6 templates copy/paste para bug, feature, debug, refactor, migração e integração. Mais 1 receita para virar snippets do seu editor.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">40</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Inter.</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Biblioteca</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 200" class="w-full">
+<text x="350" y="28" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">6 TEMPLATES ICCA — CARTAS DE BARALHO</text>
+<g font-family="Inter">
+<rect x="40" y="55" width="90" height="120" rx="6" fill="#1e3a8a" opacity="0.4" stroke="#60a5fa" stroke-width="1.5"/><text x="85" y="110" text-anchor="middle" fill="#60a5fa" font-size="28">🐛</text><text x="85" y="145" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">BUG</text>
+<rect x="145" y="55" width="90" height="120" rx="6" fill="#1e3a8a" opacity="0.4" stroke="#60a5fa" stroke-width="1.5"/><text x="190" y="110" text-anchor="middle" fill="#60a5fa" font-size="28">✨</text><text x="190" y="145" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">FEAT</text>
+<rect x="250" y="55" width="90" height="120" rx="6" fill="#1e3a8a" opacity="0.4" stroke="#60a5fa" stroke-width="1.5"/><text x="295" y="110" text-anchor="middle" fill="#60a5fa" font-size="28">🔎</text><text x="295" y="145" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">DEBUG</text>
+<rect x="355" y="55" width="90" height="120" rx="6" fill="#1e3a8a" opacity="0.4" stroke="#60a5fa" stroke-width="1.5"/><text x="400" y="110" text-anchor="middle" fill="#60a5fa" font-size="28">🔄</text><text x="400" y="145" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">REFAC</text>
+<rect x="460" y="55" width="90" height="120" rx="6" fill="#1e3a8a" opacity="0.4" stroke="#60a5fa" stroke-width="1.5"/><text x="505" y="110" text-anchor="middle" fill="#60a5fa" font-size="28">📚</text><text x="505" y="145" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">MIGR</text>
+<rect x="565" y="55" width="90" height="120" rx="6" fill="#1e3a8a" opacity="0.4" stroke="#60a5fa" stroke-width="1.5"/><text x="610" y="110" text-anchor="middle" fill="#60a5fa" font-size="28">🔗</text><text x="610" y="145" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">API</text>
+</g>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">🐛 Template — Bug fix</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">O formato mais usado. Foca em reprodução concreta e critério binário.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4 mb-6"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># INTENT
+Bug: [sintoma em 1 frase]
+Impacto: [quem é afetado, com que frequência]
+Repro: [passos ou curl/payload]
+
+# ARQUIVOS
+- Suspeitos: [paths]
+- Teste que deve passar: [path::caso]
+
+# CONSTRAINTS
+- Não alterar [assinatura/schema/etc]
+- Sem cleanup adjacente
+
+# CRITERIA
+- [comando de teste] passa
+- Diff ≤ [N] arquivos</code></pre></div>
+</section>
+
+<section id="topico-2" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">✨ Template — Feature nova</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Feature bem briefada sai em 1 turno. Escopo explícito evita mission creep.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4 mb-6"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># INTENT
+Adicionar [feature] para [perfil de usuário]
+Motivo de negócio: [uma frase mensurável]
+Comportamento esperado: [happy path em 3 linhas]
+
+# ARQUIVOS
+- Novos: [paths que serão criados]
+- Alterar: [paths]
+- Não tocar: [paths relacionados mas fora do escopo]
+
+# CONSTRAINTS
+- API pública mantida
+- [framework/versão] compatível
+- Sem novas deps sem avisar
+
+# CRITERIA
+- Testes novos passam: [path]
+- Nenhum teste existente quebra
+- Feature toggle: [flag] (desativada por padrão)</code></pre></div>
+</section>
+
+<section id="topico-3" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🔎 Template — Investigação/debug</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Separa diagnóstico de correção. Pede hipóteses ranqueadas.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4 mb-6"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># INTENT
+Entender por que [sintoma]. NÃO corrigir ainda.
+Output: 3 hipóteses ranqueadas por probabilidade,
+        cada uma com teste de confirmação.
+
+# ARQUIVOS
+- Logs: [path]
+- Suspeitos: [paths]
+- Config relevante: [path]
+
+# CONSTRAINTS
+- Não edite código
+- Não rode comandos destrutivos
+
+# CRITERIA
+- 3 hipóteses concretas
+- Cada hipótese com evidência + contra-evidência
+- Recomendação final</code></pre></div>
+</section>
+
+<section id="topico-4" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">🔄 Template — Refactor multi-arquivo</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">O maior buraco de tokens quando mal-briefado. Liste todos os call-sites.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4 mb-6"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># INTENT
+Refatorar [padrão] para [padrão novo]
+Motivo: [dado concreto — 3x copy/paste, DRY, etc]
+
+# ARQUIVOS (todos os call-sites)
+- /src/a.ts:42
+- /src/b.ts:87
+- /src/c.ts:15
+(liste TUDO — resultado de grep inclusive)
+
+# CONSTRAINTS
+- Comportamento idêntico (testes passam sem mudança)
+- Sem renomear funções públicas
+- Commit único
+
+# CRITERIA
+- `npm test` verde
+- `git diff --stat` ≤ 5 arquivos
+- Sem `any` novos</code></pre></div>
+</section>
+
+<section id="topico-5" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">📚 Template — Migração de legado</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Sem spec escrita, alucinação é garantida. Testes caracterizadores primeiro.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4 mb-6"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># INTENT
+Migrar [módulo] de [tech A] para [tech B]
+Critério de equivalência: comportamento em [spec link]
+
+# ARQUIVOS
+- Origem: [path]
+- Destino: [path novo]
+- Testes caracterizadores: [path] (criar antes)
+
+# CONSTRAINTS
+- Nenhuma regressão nos testes caracterizadores
+- API pública inalterada
+- Deprecation warning nos call-sites, não remoção
+
+# CRITERIA
+- Testes caracterizadores ≥ 20 casos
+- Cobertura de linha ≥ 85%
+- Doc de migração em /docs/migrations/[nome].md</code></pre></div>
+</section>
+
+<section id="topico-6" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🔗 Template — Integração com API externa</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Falham mais por premissa oculta que por código. Nunca deixe o modelo inferir auth.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4 mb-6"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># INTENT
+Integrar com [API Xyz] para [ação específica]
+
+# CONTRATOS
+- Endpoint: POST https://api.xyz/v1/...
+- Auth: Bearer token via env var X
+- Response: { "id": string, "status": enum }
+- Rate limit: 60/min
+- Idempotency-Key: UUID por request
+
+# ARQUIVOS
+- Client: /src/integrations/xyz-client.ts (novo)
+- Testes: /tests/integrations/xyz.test.ts
+
+# CONSTRAINTS
+- Retry exponencial (max 3) só em 5xx
+- Timeout 10s
+- Sem fallback silencioso em 4xx
+
+# CRITERIA
+- Mock server roda localmente
+- Testes cobrem: 200, 4xx, 5xx, timeout
+- Nenhum secret hard-coded</code></pre></div>
+</section>
+
+<section id="topico-7" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">💾 Como salvar como snippets</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Atalho &gt; memória. 1 gatilho por template.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-5"><h4 class="font-semibold text-blue-400 mb-3">VSCode snippets.json</h4><pre class="text-xs text-neutral-300 overflow-x-auto"><code>"ICCA Bug": {
+  "prefix": "icca-bug",
+  "body": ["# INTENT", "Bug: $1", ...]
+}</code></pre></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-5"><h4 class="font-semibold text-blue-400 mb-3">Claude Code commands</h4><pre class="text-xs text-neutral-300 overflow-x-auto"><code>~/.claude/commands/icca-bug.md
+~/.claude/commands/icca-feat.md
+# rode com /icca-bug</code></pre></div>
+</div>
+<div class="bg-primary/10 rounded-xl border border-primary/40 p-6 mt-6"><h3 class="text-lg font-semibold text-primary mb-3 flex items-center"><span class="mr-2">💡</span> Dica</h3><p class="text-neutral-300">Versione os snippets no repo dotfiles. Compartilhar com a equipe tira dúvida de "qual é o template oficial".</p></div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">6 templates</strong><span class="text-neutral-400"> — bug, feature, debug, refactor, migração, API</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Todos seguem ICCA</strong><span class="text-neutral-400"> — mesma espinha dorsal</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Snippet por template</strong><span class="text-neutral-400"> — VSCode/Alfred/Claude Code</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Versione no git</strong><span class="text-neutral-400"> — equipe alinhada</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-blue-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">2.3 — Níveis de Effort</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-2-1.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a><a href="modulo-2-3.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 2.2 — Trilha 2 Intermediário — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>

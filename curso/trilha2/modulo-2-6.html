@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 2.6 — Biblioteca de Frases-Gatilho</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#FACC15',dark:{900:'#111827',800:'#1f2937',700:'#374151',600:'#4b5563'}}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Inter',sans-serif}.dark body{background-color:#111827}
+html:not(.dark) body{background-color:#f8fafc}
+html:not(.dark) .bg-dark-900{background-color:#fff}html:not(.dark) .bg-dark-800{background-color:#f9fafb}html:not(.dark) .bg-dark-700{background-color:#f3f4f6}html:not(.dark) .bg-dark-600{background-color:#e5e7eb}
+html:not(.dark) .text-neutral-100{color:#111827}html:not(.dark) .text-neutral-300{color:#4b5563}html:not(.dark) .text-neutral-400{color:#6b7280}html:not(.dark) .text-neutral-500{color:#9ca3af}
+html:not(.dark) .border-dark-600{border-color:#d1d5db}html:not(.dark) .border-dark-700{border-color:#e5e7eb}
+html:not(.dark) .text-blue-400{color:#2563eb}html:not(.dark) .bg-blue-500\/20{background-color:rgba(37,99,235,.12)}html:not(.dark) .bg-blue-500\/10{background-color:rgba(37,99,235,.08)}html:not(.dark) .border-blue-500\/30{border-color:rgba(37,99,235,.25)}
+html:not(.dark) .hover\:bg-blue-500\/30:hover{background-color:rgba(37,99,235,.18)}
+html:not(.dark) .hover\:text-blue-400:hover{color:#2563eb}html:not(.dark) .hover\:bg-blue-500\/10:hover{background-color:rgba(37,99,235,.08)}
+html:not(.dark) .hover\:text-emerald-400:hover{color:#059669}html:not(.dark) .hover\:bg-emerald-500\/10:hover{background-color:rgba(5,150,105,.08)}
+html:not(.dark) .hover\:text-purple-400:hover{color:#7c3aed}html:not(.dark) .hover\:bg-purple-500\/10:hover{background-color:rgba(124,58,237,.08)}
+html:not(.dark) .hover\:text-amber-400:hover{color:#92400e}html:not(.dark) .hover\:bg-amber-500\/10:hover{background-color:rgba(217,119,6,.08)}
+html:not(.dark) [class*="bg-gradient-to"]{background-image:none!important}
+html:not(.dark) .text-primary{color:#a16207}html:not(.dark) .bg-primary\/10{background-color:rgba(161,98,7,.08)}html:not(.dark) .border-primary\/40{border-color:rgba(161,98,7,.25)}
+html:not(.dark) .text-sky-400{color:#0369a1}html:not(.dark) .text-yellow-400{color:#a16207}html:not(.dark) .hover\:text-sky-300:hover{color:#0284c7}
+html:not(.dark) .bg-dark-900\/95{background-color:rgba(255,255,255,.95)}
+html:not(.dark) .text-red-400{color:#dc2626}html:not(.dark) .bg-red-900\/20{background-color:rgba(220,38,38,.08)}html:not(.dark) .border-red-500\/30{border-color:rgba(220,38,38,.25)}
+html:not(.dark) .text-emerald-400{color:#059669}html:not(.dark) .bg-emerald-900\/20{background-color:rgba(5,150,105,.08)}html:not(.dark) .border-emerald-500\/30{border-color:rgba(5,150,105,.25)}
+</style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+<nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-14">
+<div class="flex items-center space-x-4"><a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300"><span class="text-2xl">🧠</span><span class="font-bold text-lg hidden sm:inline">Opus 4.7</span></a><span class="text-neutral-600">|</span><a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a></div>
+<div class="flex items-center space-x-1 sm:space-x-2">
+<a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors"><span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span></a>
+<a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10"><span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span></a>
+<a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors"><span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span></a>
+<a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors"><span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span></a>
+<button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2"><svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg><svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"/></svg></button>
+</div></div></div></nav>
+
+<nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4"><div class="flex items-center space-x-2 text-sm text-neutral-400"><a href="../../index.html" class="hover:text-blue-400">Início</a><span>/</span><a href="index.html" class="hover:text-blue-400">Trilha 2</a><span>/</span><span class="text-blue-400">Módulo 2.6</span></div></nav>
+
+<header class="bg-gradient-to-br from-blue-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-xs font-semibold rounded-full mb-4">MÓDULO 2.6</span>
+<h1 class="text-3xl sm:text-4xl font-bold mb-4">✍️ Biblioteca de Frases-Gatilho</h1>
+<p class="text-lg text-neutral-400 max-w-3xl">Como dizer "pense mais" ou "responda rápido" sem scaffolding antigo. Frases testadas para adaptive thinking, commit to approach e auto-check.</p>
+<div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">7</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">35</div><div class="text-xs text-neutral-400">Minutos</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Inter.</div><div class="text-xs text-neutral-400">Nível</div></div>
+<div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-blue-400">Linguagem</div><div class="text-xs text-neutral-400">Tipo</div></div>
+</div>
+</div></header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+<div class="mb-12 bg-dark-800 border border-dark-600 rounded-xl p-8">
+<svg viewBox="0 0 700 200" class="w-full">
+<text x="350" y="28" text-anchor="middle" fill="#a3a3a3" font-size="12" font-family="Inter">PRATELEIRA DE FRASES — 10 KITS DE GATILHO</text>
+<g font-family="Inter">
+<rect x="40" y="55" width="620" height="3" fill="#60a5fa" opacity="0.3"/>
+<rect x="40" y="115" width="620" height="3" fill="#60a5fa" opacity="0.3"/>
+<rect x="40" y="175" width="620" height="3" fill="#60a5fa" opacity="0.3"/>
+<rect x="60" y="70" width="85" height="40" rx="3" fill="#1e3a8a" opacity="0.5" stroke="#60a5fa"/><text x="102" y="95" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">+ think</text>
+<rect x="160" y="70" width="85" height="40" rx="3" fill="#1e3a8a" opacity="0.5" stroke="#60a5fa"/><text x="202" y="95" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">− think</text>
+<rect x="260" y="70" width="85" height="40" rx="3" fill="#1e3a8a" opacity="0.5" stroke="#60a5fa"/><text x="302" y="95" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">commit</text>
+<rect x="360" y="70" width="85" height="40" rx="3" fill="#1e3a8a" opacity="0.5" stroke="#60a5fa"/><text x="402" y="95" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">verify</text>
+<rect x="460" y="70" width="85" height="40" rx="3" fill="#1e3a8a" opacity="0.5" stroke="#60a5fa"/><text x="502" y="95" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">scope</text>
+<rect x="560" y="70" width="85" height="40" rx="3" fill="#1e3a8a" opacity="0.5" stroke="#60a5fa"/><text x="602" y="95" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="600">literal</text>
+<rect x="60" y="130" width="85" height="40" rx="3" fill="#7f1d1d" opacity="0.3" stroke="#f87171"/><text x="102" y="155" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">✗ MUST</text>
+<rect x="160" y="130" width="85" height="40" rx="3" fill="#7f1d1d" opacity="0.3" stroke="#f87171"/><text x="202" y="155" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">✗ every N</text>
+<rect x="260" y="130" width="85" height="40" rx="3" fill="#7f1d1d" opacity="0.3" stroke="#f87171"/><text x="302" y="155" text-anchor="middle" fill="#fca5a5" font-size="11" font-weight="600">✗ vague</text>
+</g>
+</svg>
+</div>
+
+<section id="topico-1" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">1</span><h2 class="text-2xl font-bold">📚 Frases para MAIS thinking</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">3 variações que <strong class="text-blue-400">sobem adaptive thinking</strong> sem mudar effort. Teste qual funciona melhor na sua tarefa.</p>
+<div class="space-y-3">
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><code class="text-blue-400 text-sm">"Think carefully and step-by-step."</code><p class="text-neutral-400 text-xs mt-1">Clássico. Bom para debugging.</p></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><code class="text-blue-400 text-sm">"This task involves multi-step reasoning — take your time."</code><p class="text-neutral-400 text-xs mt-1">Melhor para tarefas com decisões intermediárias.</p></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><code class="text-blue-400 text-sm">"Before you finish, verify your answer against the criteria."</code><p class="text-neutral-400 text-xs mt-1">Ativa auto-check sem scaffolding antigo.</p></div>
+</div>
+</section>
+
+<section id="topico-2" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">2</span><h2 class="text-2xl font-bold">📚 Frases para MENOS thinking</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Úteis em UX com resposta streaming ou quando latência importa mais que profundidade.</p>
+<div class="space-y-3">
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><code class="text-blue-400 text-sm">"Prioritize responding quickly."</code><p class="text-neutral-400 text-xs mt-1">Reduz thinking sem cortar tool use.</p></div>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><code class="text-blue-400 text-sm">"Thinking adds latency — when in doubt, respond directly."</code><p class="text-neutral-400 text-xs mt-1">Mais agressivo — use quando a resposta é previsível.</p></div>
+</div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-6 mt-6"><h3 class="text-lg font-semibold text-red-400 mb-2 flex items-center"><span class="mr-2">⚠️</span> Cuidado</h3><p class="text-neutral-300">Não use em tarefas críticas (security, finanças, testes). Economia de latência ali não compensa risco.</p></div>
+</section>
+
+<section id="topico-3" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">3</span><h2 class="text-2xl font-bold">🎯 Commit to an approach</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">4.7 tende a revisitar decisões. Útil cortar quando arquitetura já foi brainstormada antes.</p>
+<div class="bg-gradient-to-br from-blue-900/30 to-dark-800 rounded-xl border border-blue-500/30 p-6"><code class="text-blue-400 text-sm">"Commit to an approach and execute it without revisiting decisions mid-flight. If you hit an impasse, surface it as a question."</code>
+<p class="text-neutral-300 text-sm mt-4">A cláusula final ("surface it as a question") evita que ele congele ou gaste tokens revisitando em silêncio.</p></div>
+</section>
+
+<section id="topico-4" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">4</span><h2 class="text-2xl font-bold">✅ Auto-check — verificação antes de responder</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Detecta auto-erros sem você relê-los. <strong class="text-blue-400">NÃO use "double-check"</strong> — anti-pattern do 4.6.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-emerald-900/20 rounded-xl border border-emerald-500/30 p-5"><h4 class="font-bold text-emerald-400 mb-2">✓ Use</h4><ul class="space-y-2 text-neutral-300 text-sm"><li>"Verify your solution against the criteria before returning."</li><li>"Run the tests mentally and ensure each one passes."</li></ul></div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-5"><h4 class="font-bold text-red-400 mb-2">✗ Evite</h4><ul class="space-y-2 text-neutral-300 text-sm"><li>"Double-check everything" (vago)</li><li>"Be extra careful" (convida overthinking)</li><li>"Triple-verify" (noise)</li></ul></div>
+</div>
+</section>
+
+<section id="topico-5" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">5</span><h2 class="text-2xl font-bold">⚠️ Scaffolding antigo que atrapalha</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Rouba context e sobrescreve adaptive. <strong class="text-blue-400">Aposente do sistema inteiro</strong>.</p>
+<div class="space-y-3">
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-4"><code class="text-red-400 text-sm">"Every N tool calls, summarize progress."</code><p class="text-neutral-400 text-xs mt-1">Adaptive já faz. Scaffolding duplica.</p></div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-4"><code class="text-red-400 text-sm">"Think step by step every time."</code><p class="text-neutral-400 text-xs mt-1">"Every time" força thinking onde não precisa.</p></div>
+<div class="bg-red-900/20 rounded-xl border border-red-500/30 p-4"><code class="text-red-400 text-sm">"CRITICAL: You MUST use the Read tool first."</code><p class="text-neutral-400 text-xs mt-1">Literal demais — 4.7 inclusive lê quando não precisa.</p></div>
+</div>
+</section>
+
+<section id="topico-6" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">6</span><h2 class="text-2xl font-bold">🚫 Frases ambíguas</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">4.7 tenta cumprir literalmente frases vagas — e falha. Substitua por critério mensurável.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-xl overflow-hidden">
+<table class="w-full text-sm"><thead class="bg-dark-700"><tr><th class="text-left p-4 font-semibold">✗ Ambíguo</th><th class="text-left p-4 font-semibold">✓ Substituição</th></tr></thead>
+<tbody class="divide-y divide-dark-600">
+<tr><td class="p-4 text-red-400">"Be thorough but fast"</td><td class="p-4 text-emerald-400">"Cobertura dos 5 casos listados, em ≤ 1 turno"</td></tr>
+<tr><td class="p-4 text-red-400">"Apply best practices"</td><td class="p-4 text-emerald-400">"Siga o style guide em /docs/style.md"</td></tr>
+<tr><td class="p-4 text-red-400">"Use common sense"</td><td class="p-4 text-emerald-400">"Se não tem certeza, pergunte"</td></tr>
+<tr><td class="p-4 text-red-400">"Be conservative"</td><td class="p-4 text-emerald-400">"Sem mudanças fora dos arquivos listados"</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="topico-7" class="mb-16"><div class="flex items-center space-x-4 mb-6"><span class="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 font-bold text-xl">7</span><h2 class="text-2xl font-bold">📝 Seu kit pessoal de 10 frases</h2></div>
+<p class="text-neutral-300 mb-6 leading-relaxed">Monte um arquivo com as 10 frases que você mais usa — cada uma com caso de uso. Versione no repo dotfiles.</p>
+<div class="bg-dark-800 border border-dark-600 rounded-lg p-4"><pre class="text-xs text-neutral-300 overflow-x-auto"><code># ~/.claude/phrases.md
+
+## +think (debug difícil)
+Think carefully and step-by-step.
+
+## +verify (antes de PR)
+Verify your solution against the criteria before returning.
+
+## -think (UX latência)
+Prioritize responding quickly.
+
+## commit (arquitetura decidida)
+Commit to an approach and execute it without revisiting
+decisions. If you hit an impasse, surface it as a question.
+
+## scope (evita mission creep)
+Only modify the files listed above. No adjacent cleanup.
+
+## literal (instruction following)
+Do exactly what I asked, nothing more. If ambiguous, ask.
+
+... (mais 4)</code></pre></div>
+</section>
+
+<section class="mb-12"><div class="bg-gradient-to-br from-blue-900/40 via-dark-800 to-dark-800 rounded-xl border border-blue-500/30 p-8">
+<h2 class="text-2xl font-bold mb-6 flex items-center"><span class="mr-3">📋</span> Resumo</h2>
+<div class="space-y-4 mb-8">
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">+think / −think</strong><span class="text-neutral-400"> — 3 variações de cada</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Commit + verify</strong><span class="text-neutral-400"> — substitui scaffolding</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Frase vaga → critério</strong><span class="text-neutral-400"> — substitua sempre</span></div></div>
+<div class="flex items-start space-x-3"><span class="text-blue-400 mt-1">✓</span><div><strong class="text-white">Kit de 10</strong><span class="text-neutral-400"> — no dotfiles</span></div></div>
+</div>
+<div class="bg-dark-800/50 rounded-lg p-4 mb-8"><h3 class="font-semibold text-blue-400 mb-2">Próximo Módulo:</h3><p class="text-neutral-300">2.7 — Gestão de Sessão: 5 Portas</p></div>
+<div class="flex flex-col sm:flex-row gap-4"><a href="modulo-2-5.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Módulo Anterior</a><a href="modulo-2-7.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Próximo Módulo →</a></div>
+</div></section>
+
+</main>
+
+<footer class="border-t border-dark-600 py-8 mt-16"><div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm"><p>Módulo 2.6 — Trilha 2 Intermediário — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p></div></footer>
+
+<script>
+const t=document.getElementById('theme-toggle'),d=document.getElementById('theme-toggle-dark-icon'),l=document.getElementById('theme-toggle-light-icon'),h=document.documentElement;
+if(localStorage.getItem('theme')==='light'||(!localStorage.getItem('theme')&&!h.classList.contains('dark'))){d.classList.remove('hidden');h.classList.remove('dark')}else{l.classList.remove('hidden')}
+t.addEventListener('click',()=>{d.classList.toggle('hidden');l.classList.toggle('hidden');h.classList.toggle('dark');localStorage.setItem('theme',h.classList.contains('dark')?'dark':'light')});
+</script>
+</body>
+</html>
