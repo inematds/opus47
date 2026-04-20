@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 1 — Básico | Opus 4.7</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#FACC15', dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' } } } } }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:bg-emerald-500\/30:hover { background-color: rgba(5, 150, 105, 0.18); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🧠</span>
+            <span class="font-bold text-lg hidden sm:inline">Opus 4.7</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span><span class="hidden sm:inline">Básico</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span><span class="hidden sm:inline">Intermediário</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span><span class="hidden sm:inline">Avançado</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span><span class="hidden sm:inline">Expert</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-800 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-full mb-4">TRILHA 1 • BÁSICO</span>
+      <h1 class="text-3xl sm:text-4xl font-bold mb-4">🟢 Fundamentos do Opus 4.7</h1>
+      <p class="text-lg text-neutral-400 max-w-3xl">Entenda o que mudou do 4.6 para o 4.7, descarte hábitos velhos e execute seu primeiro briefing moderno. Em ~4h você sai com mentalidade nova e plano de desaprendizagem em 7 dias.</p>
+      <div class="grid grid-cols-4 gap-4 mt-8 max-w-2xl">
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">7</div><div class="text-xs text-neutral-400">Módulos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">45</div><div class="text-xs text-neutral-400">Tópicos</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">~4h</div><div class="text-xs text-neutral-400">Duração</div></div>
+        <div class="bg-dark-800/50 rounded-lg p-3 border border-dark-600"><div class="text-xl font-bold text-emerald-400">Básico</div><div class="text-xs text-neutral-400">Nível</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- Módulo 1.1 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.1</span>
+          <span class="text-xs text-neutral-500">~20 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">👋 Bem-vindo ao Opus 4.7</h3>
+        <p class="text-neutral-400 text-sm">Apresentação do curso, pré-requisitos e como as 4 trilhas se conectam.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <span class="text-lg">🎬</span>
+            <div><span class="font-medium">O que é este curso</span><span class="text-neutral-500 text-sm ml-2">- Para quem, por quê</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Curso prático em 4 trilhas para dominar o Claude Opus 4.7 no Claude Code, baseado em três referências oficiais da Anthropic de abril/2026.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">O 4.7 não é "o 4.6 mais inteligente" — é um novo contrato. Quem não se atualizar vai piorar a performance com prompts antigos.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">4 trilhas progressivas, ~20h totais, foco em prática imediata.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <span class="text-lg">🗓️</span>
+            <div><span class="font-medium">Timeline do 4.7</span><span class="text-neutral-500 text-sm ml-2">- Quando lançou e o que mudou</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Lançamento em abril/2026 com três docs oficiais: Best Practices, Session Management e Prompting Best Practices.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Saber o contexto evita confundir quirks do modelo com bugs do seu código.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Tokenizer novo + tendência a pensar mais = mais tokens. Mas ganho em coerência, bug finding e ambiguidade.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <span class="text-lg">🧭</span>
+            <div><span class="font-medium">As 4 trilhas</span><span class="text-neutral-500 text-sm ml-2">- Básico → Expert</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">T1 Básico (fundamentos), T2 Intermediário (produtividade), T3 Avançado (orquestração), T4 Expert (migração e produção).</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Cada trilha é independente. Você pode pular se o nível já é compatível, mas a T1 calibra o vocabulário comum.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">7 módulos por trilha, 6–8 tópicos por módulo, projeto final na T4.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <span class="text-lg">📦</span>
+            <div><span class="font-medium">Pré-requisitos</span><span class="text-neutral-500 text-sm ml-2">- O que você precisa</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Claude Code instalado, terminal, git básico, experiência mínima com 4.6.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem esses fundamentos, os exemplos práticos não rodam.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Não precisa Max para T1/T2. Auto mode exige Max na T3.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <span class="text-lg">🎯</span>
+            <div><span class="font-medium">Metas realistas</span><span class="text-neutral-500 text-sm ml-2">- O que esperar de cada trilha</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">T1: reconhece diferenças. T2: escreve bons briefings. T3: orquestra autonomia. T4: audita produção.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Esperar o que não é da trilha gera frustração. Calibre expectativa.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cada trilha tem um self-check final.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <span class="text-lg">🛠️</span>
+            <div><span class="font-medium">Setup de ambiente</span><span class="text-neutral-500 text-sm ml-2">- Em 5 minutos</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Claude Code atualizado, modelo <code class="text-emerald-400">claude-opus-4-7</code>, effort default <code class="text-emerald-400">xhigh</code>.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Usuários existentes são upgradeados automaticamente para xhigh se nunca setaram effort.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Verifique com <code class="text-emerald-400">/usage</code> se está no 4.7.</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="topic-item">
+          <button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span>
+            <span class="text-lg">🏁</span>
+            <div><span class="font-medium">Pronto para a T2?</span><span class="text-neutral-500 text-sm ml-2">- Self-check final</span></div>
+          </button>
+          <div class="topic-explanation px-6 pb-4">
+            <div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9">
+              <div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Quick-check de 5 perguntas ao fim da T1 antes de abrir a T2.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Evita avançar com hábitos velhos ainda ativos.</p></div>
+              <div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Se erra 2+, releia a T1.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-1')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-1.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- Módulo 1.2 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.2</span>
+          <span class="text-xs text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">⚡ Os 5 Fatos Não-Negociáveis</h3>
+        <p class="text-neutral-400 text-sm">xhigh default, adaptive thinking, menos tools, literal, mais tokens por design.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span><span class="text-lg">🎛️</span><div><span class="font-medium">xhigh é o novo default</span><span class="text-neutral-500 text-sm ml-2">- Entre high e max</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Novo nível de effort entre <code>high</code> e <code>max</code>, recomendado para 80% dos casos de coding agêntico.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Usuários que nunca configuraram effort foram upgradeados automaticamente para xhigh — entender é essencial.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Forte autonomia sem consumo descontrolado que max produz em runs longos.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span><span class="text-lg">🧠</span><div><span class="font-medium">Adaptive thinking</span><span class="text-neutral-500 text-sm ml-2">- Fim do budget_tokens</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">O modelo decide dinamicamente quando e quanto pensar a cada passo, baseado em effort + complexidade.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm"><code>budget_tokens</code> fixo está deprecated. Código antigo precisa migrar.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm"><code>thinking: {type: "adaptive"}</code> é a única opção agora.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span><span class="text-lg">🔧</span><div><span class="font-medium">Menos tools, menos subagents</span><span class="text-neutral-500 text-sm ml-2">- Por default</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">O 4.7 prefere raciocinar mais e delegar menos. Dispara menos tools e subagentes que o 4.6.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Se seu workflow dependia de busca agressiva, agora parece "preguiçoso" — precisa pedir explicitamente.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Na maioria dos casos, essa economia produz melhor resultado.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span><span class="text-lg">📜</span><div><span class="font-medium">Instruction following literal</span><span class="text-neutral-500 text-sm ml-2">- Não generaliza silenciosamente</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Se você diz "aplicar na seção 1", ele aplica só na seção 1 — não infere que queria em todas.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Upside: mais precisão. Downside: se quer amplitude, declare escopo explicitamente.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">"Apply this to every section, not just the first one."</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span><span class="text-lg">💰</span><div><span class="font-medium">Mais tokens por design</span><span class="text-neutral-500 text-sm ml-2">- Trade-off de qualidade</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Tokenizer atualizado + tendência a pensar mais = consumo maior que 4.6 no mesmo prompt.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Não é bug, é design. Calibre orçamento.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">A qualidade extra compensa na maioria dos casos.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span><span class="text-lg">📈</span><div><span class="font-medium">O que ficou melhor</span><span class="text-neutral-500 text-sm ml-2">- Ambiguidade, bug finding, coerência</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Lida melhor com ambiguidade, +11pp de recall em bug finding, carrega contexto entre sessões com mais confiança.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">São as áreas onde delegar vale mais a pena.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Tarefas com supervisão como gargalo agora rodam mais sozinhas.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span><span class="text-lg">✅</span><div><span class="font-medium">Quick-check de 30s</span><span class="text-neutral-500 text-sm ml-2">- Reconheça o 4.7</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">3 sinais no output: respostas calibradas à complexidade, menos tool calls desnecessárias, seguimento literal.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Valida visualmente que está usando 4.7.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Se está verboso demais, provavelmente é 4.6.</p></div></div></div></div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-2')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-2.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- Módulo 1.3 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.3</span>
+          <span class="text-xs text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">💸 Tokenizer e Custo Real</h3>
+        <p class="text-neutral-400 text-sm">Por que sessões longas consomem mais, como medir e orçar com `/usage`.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span><span class="text-lg">🔤</span><div><span class="font-medium">Tokenizer novo</span><span class="text-neutral-500 text-sm ml-2">- O que mudou</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Tokenizer atualizado no 4.7 — mesma string pode ter contagem diferente que no 4.6.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Comparações de token 4.6 vs 4.7 precisam contar a nova métrica.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Não é percentagem fixa — varia por conteúdo.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span><span class="text-lg">📊</span><div><span class="font-medium">Sessões longas = mais tokens</span><span class="text-neutral-500 text-sm ml-2">- Turnos tardios pensam mais</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">4.7 tende a pensar mais em turnos posteriores de sessões longas — melhora coerência mas consome mais.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sessões curtas bem briefadas são mais eficientes em tokens que sessões longas drip-fed.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Compactar proativamente ajuda.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span><span class="text-lg">💹</span><div><span class="font-medium">Medindo com /usage</span><span class="text-neutral-500 text-sm ml-2">- Comando novo do Claude Code</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Slash command que mostra consumo da sessão atual e histórico.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem medição, não há calibração.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Rode antes e depois de mudar prompts.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span><span class="text-lg">⚖️</span><div><span class="font-medium">Qualidade × tokens</span><span class="text-neutral-500 text-sm ml-2">- Quando vale</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">4.7 consome mais mas entrega mais valor por turno. Em tarefas complexas, o custo total cai.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Olhar só tokens/sessão engana. Olhe tokens/tarefa concluída.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Unidade correta: tokens por feature entregue, não por turno.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span><span class="text-lg">🧮</span><div><span class="font-medium">Orçamento por tarefa</span><span class="text-neutral-500 text-sm ml-2">- Estimativas iniciais</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Tabela-base: bug fix ~5–15k tokens, feature ~30–80k, refactor multi-arquivo 100k+.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Detectar consumo anormal cedo.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Consumo 3× acima da baseline = briefing ruim.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span><span class="text-lg">📉</span><div><span class="font-medium">Sinais de desperdício</span><span class="text-neutral-500 text-sm ml-2">- O que evitar</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Sessões drip-fed, scaffolds antigos ("every N calls"), leituras repetidas de mesmo arquivo.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Esses padrões multiplicam consumo silenciosamente.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Auditoria periódica de prompts evita.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span><span class="text-lg">🏦</span><div><span class="font-medium">Boas práticas financeiras</span><span class="text-neutral-500 text-sm ml-2">- Custo sustentável</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Effort calibrado por tarefa, briefing completo, compactação proativa.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Economia vem de combinar várias pequenas decisões, não de um único truque.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Rodar em low quando apropriado é legítimo.</p></div></div></div></div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-3')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-3.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- Módulo 1.4 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.4</span>
+          <span class="text-xs text-neutral-500">~40 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🧑‍💼 De Pair Programmer a Engineering Manager</h3>
+        <p class="text-neutral-400 text-sm">A mudança de contrato — delegação em vez de condução linha a linha.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span><span class="text-lg">🤝</span><div><span class="font-medium">Contrato antigo (4.6)</span><span class="text-neutral-500 text-sm ml-2">- Pair programmer</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">No 4.6, guiava linha a linha funcionava — "olha isso, faz aquilo, ajusta isso".</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Reconhecer esse estilo é o primeiro passo para aposentá-lo.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Muitos turnos, cada um curto — o oposto do novo contrato.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span><span class="text-lg">📋</span><div><span class="font-medium">Contrato novo (4.7)</span><span class="text-neutral-500 text-sm ml-2">- Engenheiro delegado</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Briefing completo + autonomia calibrada. Você vira "gerente", o Claude vira "sênior delegado".</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Extrai 2–3× mais valor por hora com menos tokens.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Menos turnos, cada um denso.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span><span class="text-lg">🔁</span><div><span class="font-medium">Drip-feed vs briefing</span><span class="text-neutral-500 text-sm ml-2">- Exemplo pareado</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Drip-feed: 4 turnos curtos. Briefing: 1 turno com intent+constraints+critério+arquivos.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Ver lado a lado dissolve a tentação de voltar ao drip.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Menos turnos ≠ menos detalhe. É mesmo detalhe condensado.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span><span class="text-lg">❌</span><div><span class="font-medium">Top 6 hábitos que penalizam</span><span class="text-neutral-500 text-sm ml-2">- Sinais de 4.6 legado</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">"Olha isso", "double-check", "MUST use", "every N calls", "be conservative", budget_tokens.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Cada um hoje ativamente atrapalha.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Audite e aposente.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span><span class="text-lg">✅</span><div><span class="font-medium">Top 6 hábitos que compensam</span><span class="text-neutral-500 text-sm ml-2">- Mentalidade nova</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">ICCA no turno 1, effort calibrado, adaptive thinking com frases-gatilho, rewind em vez de corrigir, subagente explícito, safety prompt.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">São os 6 eixos do resto do curso.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Adote progressivamente, 1 por semana.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span><span class="text-lg">🎭</span><div><span class="font-medium">Role-play</span><span class="text-neutral-500 text-sm ml-2">- Reescreva seu último prompt</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Pegue seu último prompt real, diagnostique qual contrato estava em jogo e reescreva no novo.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Teoria sem prática não muda hábito.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Execute ambos e compare turnos + tokens.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span><span class="text-lg">💡</span><div><span class="font-medium">Quando voltar a ser pair</span><span class="text-neutral-500 text-sm ml-2">- Casos legítimos</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Exploração aberta, aprendizado de domínio novo, decisão de arquitetura em aberto.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">A regra não é absoluta — há casos reais em que diálogo iterativo ganha.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Minoria dos casos, mas existem.</p></div></div></div></div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-4')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-4.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- Módulo 1.5 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.5</span>
+          <span class="text-xs text-neutral-500">~45 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🎮 Primeiro Contato Prático</h3>
+        <p class="text-neutral-400 text-sm">Hands-on: rode seu primeiro briefing ICCA e observe o 4.7 trabalhando.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span><span class="text-lg">🛠️</span><div><span class="font-medium">Setup rápido</span><span class="text-neutral-500 text-sm ml-2">- Claude Code 4.7 em 2 min</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Claude Code atualizado, modelo 4.7, effort xhigh (default).</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Ambiente pronto = exercício flui.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Verifique com <code>/usage</code>.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span><span class="text-lg">📝</span><div><span class="font-medium">Primeiro briefing ICCA</span><span class="text-neutral-500 text-sm ml-2">- Bug fix simples</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Template ICCA aplicado a um bug fix real do seu backlog.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Primeira vitória curta gera confiança.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Se não tem bug real, use um do repo opus47.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span><span class="text-lg">🏃</span><div><span class="font-medium">Deixe rodar</span><span class="text-neutral-500 text-sm ml-2">- Zero interferência</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Envie o briefing e não interrompa — observe o 4.7 executar sozinho.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Interromper cedo é o hábito mais difícil de largar.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Só fale se ele perguntar ou terminar.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span><span class="text-lg">📊</span><div><span class="font-medium">Leia o output</span><span class="text-neutral-500 text-sm ml-2">- O que o 4.7 fez sozinho?</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Marque: quantas tool calls, quantos arquivos lidos, se pediu confirmação.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Entender o padrão do 4.7 calibra expectativas.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Documente para comparar depois.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span><span class="text-lg">🔍</span><div><span class="font-medium">low vs xhigh</span><span class="text-neutral-500 text-sm ml-2">- Mesmo briefing, efforts diferentes</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Rode o mesmo prompt 2 vezes: uma em low, outra em xhigh.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sentir a diferença na pele vale mais que ler sobre ela.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Em low, 4.7 pode parar mais cedo — é respeito a effort.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span><span class="text-lg">🎤</span><div><span class="font-medium">Notificação sonora</span><span class="text-neutral-500 text-sm ml-2">- Peça um som</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">"Play a sound when you finish this task" — o Claude cria seus próprios hooks.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Libera você para outras coisas enquanto ele trabalha.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Especialmente útil em tarefas de 5+ minutos.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span><span class="text-lg">💬</span><div><span class="font-medium">Conversa pós-execução</span><span class="text-neutral-500 text-sm ml-2">- O que você aprendeu?</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Pergunte ao Claude: "o que você decidiu sozinho que eu poderia ter especificado?".</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Ele te ajuda a melhorar seus próximos briefings.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Loop de feedback rápido.</p></div></div></div></div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-5')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-5.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- Módulo 1.6 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.6</span>
+          <span class="text-xs text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🎬 Comparativo em Ação</h3>
+        <p class="text-neutral-400 text-sm">A mesma tarefa no 4.6 vs 4.7 — o que medir e onde o 4.7 vence.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span><span class="text-lg">🧪</span><div><span class="font-medium">Mesmo briefing, dois modelos</span><span class="text-neutral-500 text-sm ml-2">- Metodologia</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Prepare um briefing ICCA e rode em 4.6 e 4.7 com configs equivalentes.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Comparar estilos e decisões nativas dos dois.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Congele tudo menos o modelo.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span><span class="text-lg">📈</span><div><span class="font-medium">Métricas a observar</span><span class="text-neutral-500 text-sm ml-2">- Turnos, tokens, qualidade</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Turnos humanos, tokens totais, tempo até concluir, tamanho do diff final.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Sem métricas, "parece melhor" é ilusão.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Anote antes de rodar.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span><span class="text-lg">🐢</span><div><span class="font-medium">Onde o 4.7 parece lento</span><span class="text-neutral-500 text-sm ml-2">- E não é</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Em xhigh, a primeira resposta demora mais — mas entrega mais sem precisar de turnos extras.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Trocar latência por conclusão sem drip é ganho.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Medir por tarefa, não por resposta.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span><span class="text-lg">🚀</span><div><span class="font-medium">Onde o 4.7 dispara</span><span class="text-neutral-500 text-sm ml-2">- Ambiguidade, bugs, refactor</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Ambiguidade alta, bug finding, refactor multi-arquivo, code review profundo.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Esses são os casos onde o upgrade se paga.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Priorize 4.7 nessas tarefas.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span><span class="text-lg">⚠️</span><div><span class="font-medium">Comparações mal calibradas</span><span class="text-neutral-500 text-sm ml-2">- Armadilha comum</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Usar prompt antigo (4.6) no 4.7 e chamar de "regressão" — o prompt é o problema, não o modelo.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Evita conclusões erradas.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Refatore o prompt antes de comparar.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span><span class="text-lg">📊</span><div><span class="font-medium">Relatório do experimento</span><span class="text-neutral-500 text-sm ml-2">- Template 1 página</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Tabela: modelo, turnos, tokens, tempo, qualidade percebida, surpresas.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Um relatório = consolidação do aprendizado.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Guarde para revisitar em 3 meses.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span><span class="text-lg">🎯</span><div><span class="font-medium">Conclusões acionáveis</span><span class="text-neutral-500 text-sm ml-2">- O que muda amanhã</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">3 mudanças que você fará no seu próximo prompt real, direto do experimento.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Experimento sem ação = tempo perdido.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Sempre saia com 3 ações.</p></div></div></div></div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-6')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-6.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- Módulo 1.7 -->
+    <div class="bg-dark-800 rounded-xl border border-dark-600 mb-6">
+      <div class="p-6 border-b border-dark-600">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-emerald-400 font-bold">1.7</span>
+          <span class="text-xs text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-2xl font-bold mb-2">🗓️ Autodiagnóstico + Plano de 7 Dias</h3>
+        <p class="text-neutral-400 text-sm">Questionário, sinais vermelhos, plano de desaprendizagem e self-check para T2.</p>
+      </div>
+      <div class="divide-y divide-dark-600">
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">1</span><span class="text-lg">📊</span><div><span class="font-medium">Questionário de 10</span><span class="text-neutral-500 text-sm ml-2">- Sim/não</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">10 perguntas objetivas sobre seu workflow atual.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Mapeia exatamente onde você está em relação ao 4.7.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Mais de 4 "sim" = dívida técnica de prompts.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">2</span><span class="text-lg">🚨</span><div><span class="font-medium">Sinal vermelho #1</span><span class="text-neutral-500 text-sm ml-2">- Arquivos drip-feed</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Você manda arquivos "conforme Claude pede" em vez de listar no turno 1.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dobra ou triplica tokens por tarefa.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cura: seção "A" do ICCA.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">3</span><span class="text-lg">🚨</span><div><span class="font-medium">Sinal vermelho #2</span><span class="text-neutral-500 text-sm ml-2">- "double-check" / "MUST"</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Seus prompts têm linguagem agressiva herdada do 4.6.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Hoje causa over-trigger e over-thinking.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cura: linguagem normal ("Use tool X when…").</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">4</span><span class="text-lg">🚨</span><div><span class="font-medium">Sinal vermelho #3</span><span class="text-neutral-500 text-sm ml-2">- budget_tokens no código</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Código que ainda usa extended thinking com budget fixo.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Deprecated — precisa migrar.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Cura: <code>thinking: adaptive</code> + <code>effort</code>.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">5</span><span class="text-lg">🎯</span><div><span class="font-medium">Plano de 7 dias</span><span class="text-neutral-500 text-sm ml-2">- Desaprendizagem guiada</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">1 hábito novo por dia, cumulativo. Dia 7 = todos ativos.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Mudança gradual sustenta.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Marcador diário simples.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">6</span><span class="text-lg">📈</span><div><span class="font-medium">Métricas pessoais</span><span class="text-neutral-500 text-sm ml-2">- O que medir</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">Turnos por tarefa (↓), tokens por tarefa (↓), tempo de supervisão (↓).</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Dashboard pessoal = motor de melhoria contínua.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Baseline vem da T1. Compare após T2.</p></div></div></div></div>
+        <div class="topic-item"><button onclick="toggleTopic(this)" class="w-full px-6 py-4 flex items-center space-x-3 hover:bg-dark-700/50 transition-colors text-left"><span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-sm font-bold flex items-center justify-center flex-shrink-0">7</span><span class="text-lg">🏁</span><div><span class="font-medium">Self-check final</span><span class="text-neutral-500 text-sm ml-2">- Pronto para T2?</span></div></button><div class="topic-explanation px-6 pb-4"><div class="bg-dark-700/50 rounded-lg p-4 space-y-3 ml-9"><div><span class="text-emerald-400 font-semibold">O que é:</span><p class="text-neutral-300 text-sm">5 perguntas rápidas sobre conceitos-chave da T1.</p></div><div><span class="text-emerald-400 font-semibold">Por que aprender:</span><p class="text-neutral-300 text-sm">Valida entendimento antes de avançar.</p></div><div><span class="text-emerald-400 font-semibold">Conceitos-chave:</span><p class="text-neutral-300 text-sm">Errou 2+? Revisite antes de ir para T2.</p></div></div></div></div>
+      </div>
+      <div class="p-4 bg-dark-700/30 flex justify-start space-x-3">
+        <button onclick="openModal('modal-1-7')" class="px-4 py-2 text-sm bg-dark-600 hover:bg-dark-500 rounded-lg transition-colors">Ver em Modal</button>
+        <a href="modulo-1-7.html" class="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg transition-colors">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- Navegação entre trilhas -->
+    <div class="flex flex-col sm:flex-row gap-4 mt-12">
+      <a href="../../index.html" class="flex-1 text-center px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">← Voltar para início</a>
+      <a href="../trilha2/index.html" class="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-500 transition-colors">Próxima: T2 Intermediário →</a>
+    </div>
+
+  </main>
+
+  <!-- Modais (iframes) -->
+  <div id="modal-1-1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()"><div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600"><div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0"><div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.1</span><span class="font-semibold">Bem-vindo ao Opus 4.7</span></div><button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button></div><iframe src="modulo-1-1.html" class="flex-1 w-full rounded-b-xl"></iframe></div></div>
+  <div id="modal-1-2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()"><div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600"><div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0"><div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.2</span><span class="font-semibold">Os 5 Fatos Não-Negociáveis</span></div><button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button></div><iframe src="modulo-1-2.html" class="flex-1 w-full rounded-b-xl"></iframe></div></div>
+  <div id="modal-1-3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()"><div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600"><div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0"><div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.3</span><span class="font-semibold">Tokenizer e Custo Real</span></div><button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button></div><iframe src="modulo-1-3.html" class="flex-1 w-full rounded-b-xl"></iframe></div></div>
+  <div id="modal-1-4" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()"><div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600"><div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0"><div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.4</span><span class="font-semibold">De Pair Programmer a Engineering Manager</span></div><button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button></div><iframe src="modulo-1-4.html" class="flex-1 w-full rounded-b-xl"></iframe></div></div>
+  <div id="modal-1-5" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()"><div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600"><div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0"><div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.5</span><span class="font-semibold">Primeiro Contato Prático</span></div><button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button></div><iframe src="modulo-1-5.html" class="flex-1 w-full rounded-b-xl"></iframe></div></div>
+  <div id="modal-1-6" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()"><div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600"><div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0"><div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.6</span><span class="font-semibold">Comparativo em Ação</span></div><button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button></div><iframe src="modulo-1-6.html" class="flex-1 w-full rounded-b-xl"></iframe></div></div>
+  <div id="modal-1-7" class="modal hidden fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80" onclick="if(event.target === this) closeModal()"><div class="bg-dark-800 rounded-xl w-full max-w-6xl h-[95vh] flex flex-col border border-dark-600"><div class="p-4 border-b border-dark-600 flex justify-between items-center flex-shrink-0"><div class="flex items-center space-x-3"><span class="text-emerald-400 font-bold">1.7</span><span class="font-semibold">Autodiagnóstico + Plano de 7 Dias</span></div><button onclick="closeModal()" class="text-neutral-400 hover:text-white text-2xl leading-none">&times;</button></div><iframe src="modulo-1-7.html" class="flex-1 w-full rounded-b-xl"></iframe></div></div>
+
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Trilha 1 • Básico — Curso Opus 4.7 — <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTopic(button) {
+      const topicItem = button.closest('.topic-item');
+      const explanation = topicItem.querySelector('.topic-explanation');
+      const moduleCard = button.closest('.bg-dark-800');
+      moduleCard.querySelectorAll('.topic-explanation.active').forEach(exp => { if (exp !== explanation) exp.classList.remove('active'); });
+      explanation.classList.toggle('active');
+    }
+    function openModal(id) { const m = document.getElementById(id); if (m) { m.classList.remove('hidden'); document.body.style.overflow = 'hidden'; } }
+    function closeModal() { document.querySelectorAll('.modal').forEach(m => m.classList.add('hidden')); document.body.style.overflow = 'auto'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const dIcon = document.getElementById('theme-toggle-dark-icon');
+    const lIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) { dIcon.classList.remove('hidden'); html.classList.remove('dark'); } else { lIcon.classList.remove('hidden'); }
+    themeToggle.addEventListener('click', () => { dIcon.classList.toggle('hidden'); lIcon.classList.toggle('hidden'); html.classList.toggle('dark'); localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light'); });
+  </script>
+</body>
+</html>
